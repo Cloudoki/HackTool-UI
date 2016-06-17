@@ -1,0 +1,37 @@
+{
+  "name": "backbone-mustache-auth",
+  "description": "Manage content view authorization with Backbone and Mustache",
+  "main": "index.js",
+  "authors": [
+    "Edgar Ribeiro"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "backbone",
+    "mustache",
+    "auth"
+  ],
+  "homepage": "https://github.com/Cloudoki/backbone-mustache-auth",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.1.1",
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.1",
+    "commit": "13b53fe0caa05af56a66ab783dfff0db109b7c15"
+  },
+  "_source": "git://github.com/Cloudoki/backbone-mustache-auth.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/Cloudoki/backbone-mustache-auth.git"
+}
