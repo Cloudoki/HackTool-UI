@@ -25,8 +25,8 @@ define(
 				// Root view
 				Hacktool.RootView = new RootView();
 
-				if ( !Hacktool.code )
-					window.location.href="/#login";
+//				if ( !Hacktool.code )
+//					window.location.href="/#login";
 
 
 				Hacktool.RootView.renderNav();
