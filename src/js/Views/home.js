@@ -35,23 +35,26 @@ define(
 		    },
 
 		    getCode: function(location) {
+                
 		    	var code = location.substr(location.indexOf("=") + 1);
-
 		    	var data = {"code":code}
-
-		    	this.auth = new Login();
-
-		    	console.log(this.auth);
+		    	this.model = new Login();
 
 		    	//this.auth.endpoint = code;
 
-		    	this.auth.save(data, {
-		    		success: console.log("yayy!!!!"),
-
-		    		error: console.log("boooo")
+		    	this.model.save(data, {
+		    		success: this.storeToken.bind(this),
+		    		error: function() {
+                        console.log('BOOOOOO! ');
+                    }
 		    	});
 		    },
 
+            storeToken : function() {
+                
+                localStorage.setItem('token', this.model.attributes.access_token)
+            },
+            
 		    showError: function() {
 
 		    	this.renderAlert('.error-alert', 'danger', 'oooopppppsssss');
