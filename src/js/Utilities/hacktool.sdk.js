@@ -1,4 +1,6 @@
 var token;
+var  hacktoolRepos = [];
+
 function request(config) {
 	if(!config.headers) config.headers = {}
 	if(!config.headers.Authorization && token) config.headers.Authorization = 'token ' + token;
@@ -6,10 +8,16 @@ function request(config) {
 }
 
 function filterRepos(repos) {
+
 	for(repo in repos) {
-		console.log(repos[repo]);
+
+		//change it to hacktool
+		if (repos[repo].name.substring(0, 8) == "backbone") {
+			hacktoolRepos.push(repos[repo]);
+		}
 	}
-	//console.log("repos", repos);
+
+	return hacktoolRepos;
 }
 
 var hacktoolSdk = {
@@ -30,8 +38,7 @@ var hacktoolSdk = {
 				  	url: 'https://api.github.com/orgs/'+organization+'/repos?type=all',
 				  	method: 'GET'
 				}).done(function(data) {
-					filterRepos(data);
-					callback(null, data)
+					callback(null, filterRepos(data))
 				}).error(callback);
 			}
 		},
