@@ -1,25 +1,27 @@
-define(['Views/home', 'Views/LoginView'],function (Home, Login){
-		var Router = Backbone.Router.extend({
 
+define(
+	['Views/Dashboard'],
+	function (DashboardView)
+	{
+		var Router = Backbone.Router.extend({
+			
 			routes: {
 
+				'logout': 'logout',
+
 		        'home': 'home',
-		        'login': 'login',
 		        '*path': 'home'
 		    },
 
 		    home: function(){
-		    	var view = new Home();
-		    	Hacktool.RootView.setView(view);
+		    	var view = new DashboardView();
+		    	Application.RootView.setView(view);
 		    },
 
+		    logout: function() {
 
-		    login: function(){
-
-		    	var view = new Login();
-		    	Hacktool.RootView.setView(view);
+		    	Application.Session.logout();
 		    }
-
 		});
 
 		return Router;

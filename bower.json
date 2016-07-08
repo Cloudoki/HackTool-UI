@@ -1,9 +1,9 @@
 {
-  "name": "Hacktool",
+  "name": "cloudoki-hacktool-starter",
   "version": "1.0.0",
   "homepage": "www.cloudoki.com",
   "authors": [
-    "Tomas Monteiro <tomas@cloudoki.com>"
+    "Rui Molefas <rui@cloudoki.com>"
   ],
   "moduleType": [
     "amd"
@@ -17,6 +17,6 @@
     "requirejs": "~2.1.20",
     "underscore": "~1.8.3",
     "font-awesome": "fontawesome#~4.4.0",
-    "backbone-mustache-auth": "git://github.com/Cloudoki/backbone-mustache-auth.git"
+    "backbone-auth": "https://github.com/Cloudoki/backbone-auth.git"
   }
 }
