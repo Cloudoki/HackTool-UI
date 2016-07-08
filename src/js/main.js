@@ -71,7 +71,7 @@ require.config({
     moment: pathname+'vendor/moment/min/moment.min',
     hacktool: pathname+'js/Hacktool'
   },
-  
+
   urlArgs: "bust=" +  (new Date()).getTime()
 });
 
@@ -79,11 +79,11 @@ require.config({
 var Hacktool;
 
 require(
-  ['backbone', 'hacktool', 'bootstrap'],
-  function(Backbone, hacktool, Bootstrap)
+  ['backbone', 'hacktool', 'bootstrap', 'Utilities/hacktool.sdk'],
+  function(Backbone, hacktool, Bootstrap, hacktoolSdk)
   {
     $(document).ready(function()
-    {     
+    {
 
       Hacktool = hacktool;
       Hacktool.init();
