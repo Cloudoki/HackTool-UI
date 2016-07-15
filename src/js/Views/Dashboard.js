@@ -15,12 +15,44 @@ define(
 		    {	
 		    	this.$el.html(Mustache.render(Templates.dashboard, {}));
 
-		    	hacktoolSdk.Organizations.Repositories.list("Cloudoki", function(err, data) {
-					console.log(err, data);
-				});
+		    	this.renderArticles();
+		    	this.renderSocialFeed();
+		    	this.renderCalendar();
+		    	this.renderStats();
+		    	this.renderToolBelt();
+
+		    	// Example sdk request
+		  		// hacktoolSdk.Organizations.Repositories.list("Cloudoki", function(err, data) {
+				// 	console.log(err, data);
+				// });
 
 		        return this;
-		    }
+		    },
+
+		    // Render article list (from the articles folder)
+		    renderArticles: function() {
+
+		    },	
+
+		    // Render twitter hashtags (add twitter integration)
+		    renderSocialFeed: function() {
+
+		    },
+
+		    // Render calendar data (from calendar.json)
+		    renderCalendar: function() {
+
+		    },
+
+		    // Render github organization stats
+		    renderStats: function() {
+
+		    },
+
+		    // Render ToolBelt from toolbelt.json
+		    renderToolBelt: function() {
+
+		    },
 		});
 
 		return Dashboard;
