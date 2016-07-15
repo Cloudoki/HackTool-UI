@@ -22,9 +22,9 @@ define(
 		    	this.renderToolBelt();
 
 		    	// Example sdk request
-		  		// hacktoolSdk.Organizations.Repositories.list("Cloudoki", function(err, data) {
-				// 	console.log(err, data);
-				// });
+		  		hacktoolSdk.Organizations.Repositories.list(Application.Organization,function(err, data) {
+					console.log(err, data);
+				});
 
 		        return this;
 		    },

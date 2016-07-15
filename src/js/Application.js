@@ -4,7 +4,7 @@ define(
 	function (Router, config, User, RootView, Session)
 	{
 		var Application = {
-			
+
 			version : 1,
 			authentication: true,
 
@@ -12,6 +12,7 @@ define(
 			{
 				// Load configs
 				Application.Api = config.apiurl;
+				Application.Organization = config.organizations;
 				Application.Session = Session;
 
 				if (this.authentication) {
@@ -31,7 +32,7 @@ define(
 
 				//Check if there is authentication
 				if(token && token.length > 9)
-				{	
+				{
 					Application.Session.authenticationtoken = token;
 					Backbone.accesstoken = token;
 
@@ -43,7 +44,7 @@ define(
 			loadUserData: function() {
 
 				this.Session.loadEssentialData (function ()	{
-					
+
 					this.begin();
 				}.bind(this));
 			},
@@ -54,8 +55,8 @@ define(
 				$('body').addClass('loaded').removeClass('loading');
 
 				// Root view
-				Application.RootView = new RootView();				
-				Application.RootView.renderNav();	
+				Application.RootView = new RootView();
+				Application.RootView.renderNav();
 
 				// Router
 				Application.Router = new Router ();
@@ -64,12 +65,12 @@ define(
 			}
 		};
 
-		Backbone.ajax = function() {  
+		Backbone.ajax = function() {
 		    arguments[0].headers = {
 		        'Authorization': Application.Session.authenticationtoken,
 		    };
 
-		    return Backbone.$.ajax.apply(Backbone.$, arguments);      
+		    return Backbone.$.ajax.apply(Backbone.$, arguments);
 		};
 
 		return Application;
