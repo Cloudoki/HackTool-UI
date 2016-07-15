@@ -29,14 +29,16 @@ require.config({
 var Application;
 
 require(
-  ['backbone', 'Application', 'bootstrap', 'Utilities/hacktool.sdk'],
-  function(Backbone, application, Bootstrap, hacktoolSdk)
+  ['backbone', 'Application', 'bootstrap', 'Utilities/hacktool.sdk', 'config'],
+  function(Backbone, application, Bootstrap, hacktool, config)
   {
     $(document).ready(function()
-    {     
+    {
+      hacktoolSdk.config(config);
 
       Application = application;
       Application.init();
+
     });
   }
 );

@@ -1,4 +1,5 @@
 var token;
+var options;
 var  hacktoolRepos = [];
 
 function request(config) {
@@ -22,8 +23,8 @@ function filterRepos(repos) {
 
 var hacktoolSdk = {
 
-	config: function(t) {
-		token = t;
+	config: function(opts) {
+		options = opts;
 	},
 
 	Organizations:  {
@@ -33,9 +34,9 @@ var hacktoolSdk = {
 			}
 		},
 		Repositories: {
-			list: function (organization, callback) {
+			list: function (callback) {
 				request({
-				  	url: 'https://api.github.com/orgs/'+organization+'/repos?type=all',
+				  	url: 'https://api.github.com/orgs/'+options.organizations+'/repos?type=all',
 				  	method: 'GET'
 				}).done(function(data) {
 					callback(null, filterRepos(data))
