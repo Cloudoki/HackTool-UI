@@ -35,6 +35,7 @@ define(
 				{
 					Application.Session.authenticationtoken = token;
 					Backbone.accesstoken = token;
+					hacktoolSdk.setToken(token);
 
 				} else{ console.log("token error", token); window.location = window.location.pathname+"login.html";}
 			},

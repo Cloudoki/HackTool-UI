@@ -2,6 +2,8 @@ var token;
 var  hacktoolRepos = [];
 
 function request(config) {
+	if(!config.headers) config.headers = {}
+  	if(!config.headers.Authorization && token) config.headers.Authorization = "token " + token;
 	return $.ajax(config);
 }
 
@@ -20,6 +22,10 @@ function filterRepos(repos) {
 
 var hacktoolSdk = {
 
+	setToken: function(t){
+		token = t;
+	},
+
 	Organizations:  {
 		Teams: {
 			list: function (argument) {
@@ -27,13 +33,13 @@ var hacktoolSdk = {
 			}
 		},
 		Repositories: {
-			list: function (organization, callback) {
+			list: function (organization, success, error) {
 				request({
-				  	url: 'https://api.github.com/orgs/'+organization+'/repos?type=all',
+				  	url: 'https://api.github.com/orgs/'+organization+'/repos?type=public',
 				  	method: 'GET'
 				}).done(function(data) {
-					callback(null, filterRepos(data))
-				}).error(callback);
+					success(filterRepos(data))
+				}).error(error);
 			}
 		},
 		list: function (callback) {
@@ -50,8 +56,13 @@ var hacktoolSdk = {
 	},
 
 	Users: {
-		login: function (argument) {
-		// body...
+		me: function (success, error) {
+			request({
+			  	url: 'https://api.github.com/user',
+			  	method: 'GET'
+			}).done(function(data) {
+				success(data)
+			}).error(error);
 		}
 	}
 
