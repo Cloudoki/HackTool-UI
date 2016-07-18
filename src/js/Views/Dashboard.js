@@ -7,6 +7,10 @@ define(
 
 			events: {},
 
+			error: function(err) {
+				console.log(err);
+			},
+
 			initialize: function(options) {
 
 			},
@@ -22,9 +26,15 @@ define(
 		    	this.renderToolBelt();
 
 		    	// Example sdk request
-		  		// hacktoolSdk.Organizations.Repositories.list("Cloudoki", function(err, data) {
-				// 	console.log(err, data);
-				// });
+		  		hacktoolSdk.Organizations.Repositories.list(Application.Organization, function(data) {
+					console.log(data);
+				}, this.error
+				);
+
+				// hacktoolSdk.Users.me(function(data) {
+				// 	console.log(data);
+				// },this.error
+				// );
 
 		        return this;
 		    },
