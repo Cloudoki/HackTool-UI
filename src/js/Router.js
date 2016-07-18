@@ -8,7 +8,6 @@ define(
 			routes: {
 
 				'logout': 'logout',
-
 		        'home': 'home',
 		        '*path': 'home'
 		    },

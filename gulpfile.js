@@ -49,16 +49,22 @@ gulp.task('copy:images', function() {
         .pipe(copy(dirs.release, {prefix: 1}));
 });
 gulp.task('copy:scripts', function() {
-
-    var vendorPaths = Object.keys(config.main.paths).map(function(k) {
-        return dirs.source+'/'+config.main.paths[k]+'.js'
-    });
-
-    var otherPaths = [
-        dirs.source+'/js/**/*'
-    ];
-
-    return gulp.src(vendorPaths.concat(otherPaths)).pipe(copy(dirs.release, {prefix: 1}));
+    return gulp.src([
+            dirs.source+'/vendor/jquery/dist/jquery.min.js',
+            dirs.source+'/vendor/backbone/backbone-min.js',
+            dirs.source+'/vendor/bootstrap/dist/css/bootstrap.min.css',
+            dirs.source+'/vendor/bootstrap/dist/js/bootstrap.min.js',
+            dirs.source+'/vendor/underscore/underscore-min.js',
+            dirs.source+'/vendor/requirejs/require.js',
+            dirs.source+'/vendor/mustache.js/mustache.js',
+            dirs.source+'/vendor/backgrid/lib/backgrid.js',
+            dirs.source+'/vendor/backgrid/lib/backgrid.css',
+            dirs.source+'/vendor/chosen/chosen.jquery.js',
+            dirs.source+'/vendor/chosen/chosen.css',
+            dirs.source+'/vendor/chosen/chosen-sprite.png',
+            dirs.source+'/vendor/chosen/chosen-sprite@2x.png',
+            dirs.source+'/js/**/*'
+        ]).pipe(copy(dirs.release, {prefix: 1}));
 });
 // Copy dummy data
 gulp.task('copy:dummy', function() {

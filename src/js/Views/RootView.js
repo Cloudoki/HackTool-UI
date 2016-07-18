@@ -25,7 +25,6 @@ define(
 			},
 
 			renderNav: function() {
-
 				$('header').html(Mustache.render(Templates.topnav, {}));
 			}
 		});
