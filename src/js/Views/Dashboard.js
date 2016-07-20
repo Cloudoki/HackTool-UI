@@ -26,17 +26,6 @@ define(
 		    	this.renderStats();
 		    	this.renderToolBelt();
 
-		    	// Example sdk request
-		  		hacktoolSdk.Organizations.Repositories.list(Application.Organization, function(data) {
-					console.log(data);
-				}, this.error
-				);
-
-				// hacktoolSdk.Users.me(function(data) {
-				// 	console.log(data);
-				// },this.error
-				// );
-
 		        return this;
 		    },
 
@@ -58,6 +47,12 @@ define(
 		    // Render calendar data (from calendar.json)
 		    renderCalendar: function() {
 
+		    	var componentName = "calendar";
+
+		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    		// Render data here
+					console.log(data[componentName]);
+				}, this.error);
 		    },
 
 		    // Render github organization stats
@@ -68,6 +63,12 @@ define(
 		    // Render ToolBelt from toolbelt.json
 		    renderToolBelt: function() {
 
+		    	var componentName = "toolbelt";
+
+		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    		// Render data here
+					console.log(data[componentName]);
+				}, this.error);
 		    },
 		});
 
