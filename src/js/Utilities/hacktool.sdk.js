@@ -64,6 +64,24 @@ var hacktoolSdk = {
 				success(data)
 			}).error(error);
 		}
+	},
+
+	Components: {
+
+		// Global GET function for every json file in the repo
+		get: function (component, success, error) {
+			request({
+			  	url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/'+component+'.json',
+			  	method: 'GET'
+			}).done(function(data) {				
+				hacktoolSdk.Components.read(data.download_url, success)
+			}).error(error);
+		},
+
+		// Raw JSON fetcher for the file
+		read: function(content, success, error) {
+			$.getJSON(content, null, success);
+		}
 	}
 
 }

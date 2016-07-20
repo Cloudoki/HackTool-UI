@@ -25,9 +25,11 @@ define(
 		    	this.renderStats();
 		    	this.renderToolBelt();
 
-		    	// Example sdk request
-		  		hacktoolSdk.Organizations.Repositories.list(Application.Organization, function(data) {
-					console.log(data);
+		    	var componentName = 'toolbelt';
+
+		    	// Example sdk request for a component data file (JSON)
+		  		hacktoolSdk.Components.get(componentName, function(data) {
+					console.log(data[componentName]);
 				}, this.error
 				);
 
