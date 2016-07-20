@@ -17,8 +17,9 @@ define(
 
 		    render: function()
 		    {
-		    	this.$el.html(Mustache.render(Templates.dashboard, {}));
+		    	//this.$el.html(Mustache.render(Templates.dashboard, {}));
 
+                this.renderSubNav();
 		    	this.renderArticles();
 		    	this.renderSocialFeed();
 		    	this.renderCalendar();
@@ -39,6 +40,11 @@ define(
 		        return this;
 		    },
 
+            renderSubNav:function(){
+                
+                this.$el.html(Mustache.render(Templates.dashboard_sub_nav, {}))
+            },
+            
 		    // Render article list (from the articles folder)
 		    renderArticles: function() {
 
