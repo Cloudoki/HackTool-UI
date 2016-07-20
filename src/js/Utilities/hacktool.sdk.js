@@ -71,7 +71,7 @@ var hacktoolSdk = {
 		// Global GET function for every json file in the repo
 		get: function (component, success, error) {
 			request({
-			  	url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/'+component+'.json',
+			  	url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/components/'+component+'.json',
 			  	method: 'GET'
 			}).done(function(data) {				
 				hacktoolSdk.Components.read(data.download_url, success)
