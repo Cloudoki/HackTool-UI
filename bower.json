@@ -18,5 +18,8 @@
     "underscore": "~1.8.3",
     "font-awesome": "fontawesome#~4.4.0",
     "backbone-auth": "https://github.com/Cloudoki/backbone-auth.git"
+  },
+  "dependencies": {
+    "simplemde": "~1.11.2"
   }
 }

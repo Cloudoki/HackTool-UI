@@ -31,6 +31,8 @@ define(
 		    // Render article list (from the articles folder)
 		    renderArticles: function() {
 
+		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
+		    	hacktoolSdk.Articles.add("<div>asdds</div>");
 		    },
 
 		    // Render twitter hashtags (add twitter integration)

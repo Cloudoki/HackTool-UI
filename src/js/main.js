@@ -7,11 +7,7 @@ require.config({
       bootstrap: {
         deps: ['jquery'],
         exports: 'bootstrap'
-      },
-    backgrid: {
-      deps: ['jquery','backbone','underscore'],
-      exports: 'Backgrid'
-    }
+      }
   },
 
   paths: {
@@ -20,7 +16,8 @@ require.config({
       "requirejs": pathname+"vendor/requirejs/require",
       "underscore": pathname+"vendor/underscore/underscore-min",
       "mustache": pathname+"vendor/mustache.js/mustache",
-      "bootstrap": pathname+"vendor/bootstrap/dist/js/bootstrap.min"
+      "bootstrap": pathname+"vendor/bootstrap/dist/js/bootstrap.min",
+      "simplemde": pathname+"vendor/simplemde/dist/simplemde.min"
   },
 
   urlArgs: "bust=" +  (new Date()).getTime()

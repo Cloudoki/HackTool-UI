@@ -57,12 +57,12 @@ gulp.task('copy:scripts', function() {
             dirs.source+'/vendor/underscore/underscore-min.js',
             dirs.source+'/vendor/requirejs/require.js',
             dirs.source+'/vendor/mustache.js/mustache.js',
-            dirs.source+'/vendor/backgrid/lib/backgrid.js',
-            dirs.source+'/vendor/backgrid/lib/backgrid.css',
             dirs.source+'/vendor/chosen/chosen.jquery.js',
             dirs.source+'/vendor/chosen/chosen.css',
             dirs.source+'/vendor/chosen/chosen-sprite.png',
             dirs.source+'/vendor/chosen/chosen-sprite@2x.png',
+            dirs.source+'/vendor/chosen/chosen-sprite@2x.png',
+            dirs.source+'/vendor/simplemde/dist/simplemde.min.js',
             dirs.source+'/js/**/*'
         ]).pipe(copy(dirs.release, {prefix: 1}));
 });

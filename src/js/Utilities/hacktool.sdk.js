@@ -22,8 +22,15 @@ function filterRepos(repos) {
 
 var hacktoolSdk = {
 
+	user: null,
+
 	setToken: function(t){
 		token = t;
+	},
+
+	// Raw JSON fetcher for the file
+	readJSON: function(content, success, error) {
+		$.getJSON(content, null, success);
 	},
 
 	Organizations:  {
@@ -61,6 +68,8 @@ var hacktoolSdk = {
 			  	url: 'https://api.github.com/user',
 			  	method: 'GET'
 			}).done(function(data) {
+				console.log(data)
+				hacktoolSdk.user = data;
 				success(data)
 			}).error(error);
 		}
@@ -74,13 +83,51 @@ var hacktoolSdk = {
 			  	url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/components/'+component+'.json',
 			  	method: 'GET'
 			}).done(function(data) {				
-				hacktoolSdk.Components.read(data.download_url, success)
+				hacktoolSdk.readJSON(data.download_url, success)
+			}).error(error);
+		}
+	},
+
+	Articles: {
+
+		getMetadata: function(success, error) {
+			request({
+			  	url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/metadata.json',
+			  	method: 'GET'
+			}).done(function(data) {				
+				hacktoolSdk.readJSON(data.download_url, success)
 			}).error(error);
 		},
 
-		// Raw JSON fetcher for the file
-		read: function(content, success, error) {
-			$.getJSON(content, null, success);
+		list: function(success, error) {
+			hacktoolSdk.Articles.getMetadata(success, error);
+		},
+
+		add: function(HTML, success, error) {
+
+			// Get the metadata first so we know on what ID we should add the new article
+			hacktoolSdk.Articles.getMetadata(function(data){
+
+				var lastId = data.articles.length? data.articles[data.articles.length-1].id: 0;
+				var article = hacktoolSdk.Articles.prepareArticle(HTML, lastId);
+
+				request({
+				  	url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/',
+				  	method: 'PUT'
+				}).done(function(data) {				
+					hacktoolSdk.readJSON(data.download_url, success)
+				}).error(error);
+			});
+		},
+
+		prepareArticle: function(HTML, lastId) {
+			
+			introLength = 200;
+
+			return {
+				id: lastId +1,
+				content: HTML
+			}
 		}
 	}
 
