@@ -1,2 +1,95 @@
-.navbar-brand { background-image: url(../images/hack-icon.png); background-position: center; background-size: cover; margin: 10px!important; padding: 26px 15px;}
-.navbar-right { margin: 12px }
+$font-stack:    Open sans, sans-serif;
+$primary-color: #e94e1b;
+
+
+body {
+    background-color: #f7f7f7;
+}
+
+.navbar-default {
+    
+    border: none;
+    border-radius: 0px;
+    background-color: #e8e8e8;
+    margin-bottom: 0px;
+
+    .navbar-brand { 
+        background-image: url(../images/hack-icon.png); 
+        background-position: center; 
+        background-size: cover; 
+        margin: 15px!important; 
+        padding: 26px 15px;}
+
+    .navbar-right { 
+
+        margin: 12px;
+
+        li {
+
+            a { 
+                color: #ffffff!important; 
+                font-family: $font-stack; 
+                font-weight: 400;
+                text-transform: uppercase;
+                font-size: 13px;
+                margin-top: 5px;
+            }
+
+        }
+        
+        .user_holder { 
+            
+            position: relative;
+            
+            &:before {
+                content: '';
+                width: 1px;
+                height: 40px;
+                background-color: #999;
+                position: absolute;
+                margin-top: 10px;
+            }
+        
+            .user_description {
+
+                display: inline-block;
+                vertical-align: middle;
+                text-align: right;
+                padding: 0px 20px;
+
+                .user_name {
+                    color: $primary-color;
+                    font-family: $font-stack;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    margin: 2px 0;
+                }
+                .user_org {
+                    color: $primary-color;
+                    font-family: $font-stack;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    font-size: 13px;
+                    margin: 2px 0;
+                }
+            }
+
+            .user_image {
+
+                display: inline-block;
+                vertical-align: middle;
+                width: 60px;
+                height: 60px;
+                background-color: #fff;
+                border-radius: 100%;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+            
+        }
+
+    }
+}

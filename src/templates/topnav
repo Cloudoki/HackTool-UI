@@ -19,6 +19,15 @@
         </li>
         <li><a href="#">Team</a></li>
         <li><a href="#">Tool Belt</a></li>
+        <li class="user_holder">
+            <div class="user_description">
+                <p class="user_name">Your name</p>
+                <p class="user_org">#organization</p>
+            </div>
+            <div class="user_image">
+                
+            </div>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
