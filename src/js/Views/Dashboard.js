@@ -37,47 +37,48 @@ define(
             
             
             // Render article list (from the articles folder)
-            renderArticles: function() {
-​
-                hacktoolSdk.Articles.list(function(data){console.log(data)})
-​
-            },
-​
-            // Render twitter hashtags (add twitter integration)
-            renderSocialFeed: function() {
-​
-            },
-​
-            // Render calendar data (from calendar.json)
-            renderCalendar: function() {
-​
-                var componentName = "calendar";
-​
-                hacktoolSdk.Components.get(componentName, function(data) {
-                    // Render data here
-                    console.log(data[componentName]);
-                }, this.error);
-            },
-​
-            // Render github organization stats
-            renderStats: function() {
-            },
-​
-            // Render ToolBelt from toolbelt.json
-            renderToolBelt: function() {
-​
-                var componentName = "toolbelt";
-​
-                hacktoolSdk.Components.get(componentName, function(data) {
-                    // Render data here
-                    console.log(data[componentName]);
-                }, this.error);
+
+		    renderArticles: function() {
+
+		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
+
+		    },
+
+		    // Render twitter hashtags (add twitter integration)
+		    renderSocialFeed: function() {
+
+		    },
+
+		    // Render calendar data (from calendar.json)
+		    renderCalendar: function() {
+
+		    	var componentName = "calendar";
+
+		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    		// Render data here
+					console.log(data[componentName]);
+				}, this.error);
+		    },
+
+		    // Render github organization stats
+		    renderStats: function() {
+		    },
+
+		    // Render ToolBelt from toolbelt.json
+		    renderToolBelt: function() {
+
+		    	var componentName = "toolbelt";
+
+		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    		// Render data here
+					console.log(data[componentName]);
+				}, this.error);
                 
                 var toolbelt = new ToolBelt();
                this.$el.find('section.toolbelt').html(toolbelt.render().el);
-            },
-        });
-​
-        return Dashboard;
-    }
+		    },
+		});
+
+		return Dashboard;
+	}
 );
