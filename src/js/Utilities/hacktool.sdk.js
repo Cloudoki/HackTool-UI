@@ -118,11 +118,10 @@ var hacktoolSdk = {
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
-                message: "asdasd",
+                message: "publishing new article",
                 content: HTML
             })
         }).done(function(data) {
-          //console.log(data);
           hacktoolSdk.readJSON(data.download_url, success)
         }).error(error);
       });

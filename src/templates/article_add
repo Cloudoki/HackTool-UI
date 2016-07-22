@@ -1,2 +1,4 @@
-<input type="text"/>
+<input id="title" type="text"/>
 <textarea id="mdeditor"></textarea>
+
+<button class="submit">Submit</button>
