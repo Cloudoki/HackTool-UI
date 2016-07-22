@@ -39,9 +39,6 @@ define(
 
 		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
 
-		    	var article = JSON.stringify({"title": "Testing","content": "sdasdsadadasdasdasd"});
-
-		    	hacktoolSdk.Articles.add(btoa(article));
 		    },
 
 		    // Render twitter hashtags (add twitter integration)
