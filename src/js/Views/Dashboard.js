@@ -34,54 +34,51 @@ define(
                this.$el.find('section.subnav').html(dash.render().el);
                
            },
-
+            
+            
             // Render article list (from the articles folder)
-            renderArticles: function() {
+		    renderArticles: function() {
 
-                hacktoolSdk.Articles.list(function(data){console.log(data)})
+		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
 
-                var article = JSON.stringify({"title": "Testing","content": "sdasdsadadasdasdasd"});
+		    },
 
-                hacktoolSdk.Articles.add(btoa(article));
-            },
+		    // Render twitter hashtags (add twitter integration)
+		    renderSocialFeed: function() {
 
-            // Render twitter hashtags (add twitter integration)
-            renderSocialFeed: function() {
+		    },
 
-            },
+		    // Render calendar data (from calendar.json)
+		    renderCalendar: function() {
 
-            // Render calendar data (from calendar.json)
-            renderCalendar: function() {
+		    	var componentName = "calendar";
 
-                var componentName = "calendar";
+		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    		// Render data here
+					console.log(data[componentName]);
+				}, this.error);
+		    },
 
-                hacktoolSdk.Components.get(componentName, function(data) {
-                    // Render data here
-                    console.log(data[componentName]);
-                }, this.error);
+		    // Render github organization stats
+		    renderStats: function() {
+		    },
 
-            },
+		    // Render ToolBelt from toolbelt.json
+		    renderToolBelt: function() {
 
-            // Render github organization stats
-            renderStats: function() {
+		    	var componentName = "toolbelt";
 
-            },
-
-            // Render ToolBelt from toolbelt.json
-            renderToolBelt: function() {
-
-                var componentName = "toolbelt";
-
-                hacktoolSdk.Components.get(componentName, function(data) {
-                    // Render data here
-                    console.log(data[componentName]);
-                }, this.error);
+		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    		// Render data here
+					console.log(data[componentName]);
+				}, this.error);
                 
-               var toolbelt = new ToolBelt();
+                var toolbelt = new ToolBelt();
                this.$el.find('section.toolbelt').html(toolbelt.render().el);
-            },
-        });
+		    },
+		});
 
-        return Dashboard;
-    }
+		return Dashboard;
+	}
 );
+            
