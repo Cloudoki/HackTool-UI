@@ -1,82 +1,87 @@
-
 define(
-	['Views/BaseView'],
-	function (BaseView)
-	{
-		var Dashboard = BaseView.extend({
+    ['Views/BaseView', 'Views/ToolBelt', 'Views/DashboardSubNav'],
+    function (BaseView, ToolBelt, DashboardSubNav)
+    {
+        var Dashboard = BaseView.extend({
 
-			events: {},
+            events: {},
 
-			error: function(err) {
-				console.log(err);
-			},
-
-			initialize: function(options) {
-
-			},
-
-		    render: function()
-		    {
-		    	//this.$el.html(Mustache.render(Templates.dashboard, {}));
-
-                this.renderSubNav();
-		    	this.renderArticles();
-		    	this.renderSocialFeed();
-		    	this.renderCalendar();
-		    	this.renderStats();
-		    	this.renderToolBelt();
-
-		        return this;
-		    },
-
-            renderSubNav:function(){
-
-                this.$el.html(Mustache.render(Templates.dashboard_sub_nav, {}))
+            error: function(err) {
+                console.log(err);
             },
 
-		    // Render article list (from the articles folder)
-		    renderArticles: function() {
+            initialize: function(options) {
 
-		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
+            },
 
-		    	var article = JSON.stringify({"title": "Testing","content": "sdasdsadadasdasdasd"});
+            render: function()
+            {
+                this.$el.html(Mustache.render(Templates.dashboard, {}));
 
-		    	hacktoolSdk.Articles.add(btoa(article));
-		    },
+                this.renderSubNav();
+                this.renderArticles();
+                this.renderSocialFeed();
+                this.renderCalendar();
+                this.renderStats();
+                this.renderToolBelt();
 
-		    // Render twitter hashtags (add twitter integration)
-		    renderSocialFeed: function() {
+                return this;
+            },
 
-		    },
+           renderSubNav:function(){
+               
+               var dash = new DashboardSubNav();
+               this.$el.find('section.subnav').html(dash.render().el);
+               
+           },
 
-		    // Render calendar data (from calendar.json)
-		    renderCalendar: function() {
+            // Render article list (from the articles folder)
+            renderArticles: function() {
 
-		    	var componentName = "calendar";
+                hacktoolSdk.Articles.list(function(data){console.log(data)})
 
-		    	hacktoolSdk.Components.get(componentName, function(data) {
-		    		// Render data here
-					console.log(data[componentName]);
-				}, this.error);
-		    },
+                var article = JSON.stringify({"title": "Testing","content": "sdasdsadadasdasdasd"});
 
-		    // Render github organization stats
-		    renderStats: function() {
+                hacktoolSdk.Articles.add(btoa(article));
+            },
 
-		    },
+            // Render twitter hashtags (add twitter integration)
+            renderSocialFeed: function() {
 
-		    // Render ToolBelt from toolbelt.json
-		    renderToolBelt: function() {
+            },
 
-		    	var componentName = "toolbelt";
+            // Render calendar data (from calendar.json)
+            renderCalendar: function() {
 
-		    	hacktoolSdk.Components.get(componentName, function(data) {
-		    		// Render data here
-					console.log(data[componentName]);
-				}, this.error);
-		    },
-		});
+                var componentName = "calendar";
 
-		return Dashboard;
-	}
+                hacktoolSdk.Components.get(componentName, function(data) {
+                    // Render data here
+                    console.log(data[componentName]);
+                }, this.error);
+
+            },
+
+            // Render github organization stats
+            renderStats: function() {
+
+            },
+
+            // Render ToolBelt from toolbelt.json
+            renderToolBelt: function() {
+
+                var componentName = "toolbelt";
+
+                hacktoolSdk.Components.get(componentName, function(data) {
+                    // Render data here
+                    console.log(data[componentName]);
+                }, this.error);
+                
+               var toolbelt = new ToolBelt();
+               this.$el.find('section.toolbelt').html(toolbelt.render().el);
+            },
+        });
+
+        return Dashboard;
+    }
 );
