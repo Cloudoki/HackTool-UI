@@ -30,15 +30,18 @@ define(
 		    },
 
             renderSubNav:function(){
-                
+
                 this.$el.html(Mustache.render(Templates.dashboard_sub_nav, {}))
             },
-            
+
 		    // Render article list (from the articles folder)
 		    renderArticles: function() {
 
 		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
-		    	hacktoolSdk.Articles.add("<div>asdds</div>");
+
+		    	var article = JSON.stringify({"title": "Testing","content": "sdasdsadadasdasdasd"});
+
+		    	hacktoolSdk.Articles.add(btoa(article));
 		    },
 
 		    // Render twitter hashtags (add twitter integration)
