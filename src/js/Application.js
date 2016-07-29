@@ -13,6 +13,7 @@ define(
 				// Load configs
 				Application.Api = config.apiurl;
 				Application.Organization = config.organizations;
+				Application.Team = config.team;
 				Application.Session = Session;
 
 				if (this.authentication) {
