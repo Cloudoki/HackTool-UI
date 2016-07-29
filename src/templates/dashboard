@@ -1,2 +1,13 @@
 <section class="subnav"></section>
-<section class="toolbelt"></section>
+
+<div class="container-fluid spaces">
+   <div class="col-sm-8">
+   <section class="dashboard_posts"></section> 
+</div>
+<div class="col-sm-4">
+   
+   <section class="calendar"></section>
+   <section class="toolbelt"></section>
+    
+</div> 
+</div>

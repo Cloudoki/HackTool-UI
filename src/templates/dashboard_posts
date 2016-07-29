@@ -1,17 +1,15 @@
 <div class="dash-content">
-	<div class="dash_border"> </div>
-		<div class="dash_tab1">
-			<p class="dash_title">POSTS</p>
+		<div class="dash_tab active">
+			<a class="dash_title">POSTS</a>
 		</div>
-		<div class="dash_tab2">
-			<p class="dash_title">READ ME</p>
+		<div class="dash_tab">
+			<a class="dash_title">READ ME</a>
 		</div>
 	<div class="dash_container">
-		<ul>
 			<div class="post-display">
 				<h1 class="display-block post-title">Tool Belt Mandarin</h1>
-					<div>
-						<img src="/images/paper-plane.png">
+					<div class="post-specs">
+						<img class="img-responsive" src="/images/paper-plane.png">
 						<p class="details-text">Post on February 2016</p>
 						<img src="/images/folder.png">
 						<p class="details-text">Post in Hackfridays, Tool Belt</p>
@@ -21,8 +19,8 @@
 
 			<div class="post-display">
 				<h1 class="display-block post-title">Tool Belt Mandarin</h1>
-					<div>
-						<img src="/images/paper-plane.png">
+					<div class="post-specs">
+						<img class="img-responsive" src="/images/paper-plane.png">
 						<p class="details-text">Post on February 2016</p>
 						<img src="/images/folder.png">
 						<p class="details-text">Post in Hackfridays, Tool Belt</p>
@@ -30,6 +28,5 @@
 				<p class="display-block post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper metus in lorem rhoncus, quis eleifend est suscipit. Fusce justo diam, dapibus vitae nisi sed, vestibulum lacinia risus. Vestibulum ut ultrices erat. Curabitur turpis nisi, vestibulum quis consequat vitae, porta quis felis. Integer tempor orci vitae diam porta dapibus nec ut felis. Mauris vel vestibulum metus.</p>
 			</div>
 			
-		</ul>
 	</div>
 </div>

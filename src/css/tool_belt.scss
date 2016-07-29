@@ -1,29 +1,33 @@
 $grey-color: #404040;
 
 .tool-content {
+    
+    &.top-space {
+        margin-top: 30px;
+    }
 
 	.toolbelt_container {
-    	background-color: #ffffff;
-		width: 320px;   
+    	background-color: #ffffff;  
     	border-top: 1px solid #dddddd;
-    	margin: -1px 20px 20px 20px;
+    	margin-top: -1px;
 	}
 
 	.tool_tab {
 		background-color: #ffffff;
 		width: 100px;
 		height: 40px;
-		margin: 0px 20px 0px 20px;
+		//margin: 0px 20px 0px 20px;
 		position: relative;
+        border-top: 4px solid #ef4b2a;
 	}
 
-	.tool_border {
-		width: 100px;
-		height: 4px;
-		background-color: #ef4b2a;
-		border-radius: 5px;
-		margin: 20px 20px 0px 20px;
-	}
+//	.tool_border {
+//		width: 100px;
+//		height: 4px;
+//		background-color: #ef4b2a;
+//		border-radius: 5px;
+//		margin: 20px 20px 0px 20px;
+//	}
 
 	.tool_title {
 		font-family: $font-stack;
@@ -33,6 +37,7 @@ $grey-color: #404040;
 	    color: $grey-color;
 	    text-align: center;
 	    padding: 8px;
+        display: block;
 	}
 
 	a {
@@ -52,7 +57,6 @@ $grey-color: #404040;
 	.display {
 		padding: 15px 10px 0px 0px;
 		font-family: $font-stack;
-	    font-weight: 550;
 	    color: $grey-color;
 	    font-size: 16px;
 	}

@@ -2,38 +2,24 @@ $grey-color: #404040;
 
 .dash-content {
 
-	.dash_container {
-    	background-color: #ffffff;
-		width: 600px;   
-    	border-top: 1px solid #dddddd;
-    	margin: -1px 20px 20px 20px;
-	}
-
-	.dash_tab1 {
-		background-color: #ffffff;
-		width: 100px;
-		height: 40px;
-		margin: 0px 20px 0px 20px;
-		position: relative;
-		display: inline-block;
-	}
-
-	.dash_tab2 {
+	.dash_tab {
 		background-color: #dddddd;
 		width: 100px;
-		height: 40px;
-		margin: 0px 20px 0px 20px;
-		position: relative;
 		display: inline-block;
+        
+        &.active {
+            background-color: #ffffff;
+            border-top: 4px solid #ef4b2a;
+        }
 	}
 
-	.dash_border {
-		width: 100px;
-		height: 4px;
-		background-color: #ef4b2a;
-		border-radius: 5px;
-		margin: 20px 20px 0px 20px;
-	}
+//	.dash_border {
+//		width: 100px;
+//		height: 4px;
+//		background-color: #ef4b2a;
+//		border-radius: 5px;
+//		margin: 20px 20px 0px 20px;
+//	}
 
 	.dash_title {
 		font-family: $font-stack;
@@ -43,21 +29,7 @@ $grey-color: #404040;
 	    color: $grey-color;
 	    text-align: center;
 	    padding: 8px;
-	}
-
-	a {
-		color: #7f7f7f;
-	}
-
-	a:hover {
-	  	color: $grey-color;
-	  	text-decoration: none;
-	}
-
-
-	.dash_container:last-child {
-		padding-bottom: 10px;
-		border-bottom: none!important;
+        display: block;
 	}
 
 	.display-block {
@@ -67,11 +39,27 @@ $grey-color: #404040;
 	.post-text {
 		padding: 15px 10px 0px 0px;
 		font-family: $font-stack;
-	    font-weight: 550;
 	    color: $grey-color;
-	    font-size: 16px;
+	    font-size: 15px;
 	}
 
+    .post-specs {
+        
+        img {
+            display: inline-block; 
+            vertical-align: middle;
+            max-width: 100%;
+            width: 15px;
+        }
+        
+        p {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        
+    }
+    
 	.details-text {
 		padding: 15px 10px 0px 0px;
 		font-family: $font-stack;
@@ -79,17 +67,28 @@ $grey-color: #404040;
 		font-size: 9px;
 		color: #7f7f7f;
 	}
+    
+    .dash_container {
+    	background-color: #ffffff;
+        padding: 30px;
+        
+        .post-display{
+            border-bottom: 1px solid #dddddd;
+            padding-bottom: 15px;
+            
+            &:last-child {
+                border-bottom: none;
+            }
+        }
 
-	.post-title {
-		color: #ef4b2a;
-		font-family: $font-stack;
-	}
-
-	.post-display{
-		width: 550px;
-		align: center;
-		border-top: 1px solid #dddddd;
+        .post-title {
+            color: #ef4b2a;
+            font-family: $font-stack;
+        }
+       
 	}
 
 }
+
+
 

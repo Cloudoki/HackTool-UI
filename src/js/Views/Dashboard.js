@@ -1,33 +1,39 @@
 define(
-    ['Views/BaseView', 'Views/ToolBelt', 'Views/DashboardSubNav'],
-    function (BaseView, ToolBelt, DashboardSubNav)
+    ['Views/BaseView', 'Views/ToolBelt', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts'],
+    function (BaseView, ToolBelt, DashboardSubNav, Calendar, DasboardPosts)
     {
         var Dashboard = BaseView.extend({
-​
+
             events: {},
-​
+
             error: function(err) {
                 console.log(err);
             },
-​
+
             initialize: function(options) {
-​
+
             },
-​
+
             render: function()
             {
                 this.$el.html(Mustache.render(Templates.dashboard, {}));
-​
+
                 this.renderSubNav();
                 this.renderArticles();
                 this.renderSocialFeed();
                 this.renderCalendar();
                 this.renderStats();
                 this.renderToolBelt();
-​
+                this.renderPosts();
+
                 return this;
             },
-​
+
+            renderPosts : function(){
+                var posts = new DasboardPosts();
+               this.$el.find('section.dashboard_posts').html(posts.render().el);
+            },
+            
            renderSubNav:function(){
                
                var dash = new DashboardSubNav();
@@ -40,7 +46,7 @@ define(
 
 		    renderArticles: function() {
 
-		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
+		    	//hacktoolSdk.Articles.list(function(data){console.log(data)})
 
 		    },
 
@@ -58,6 +64,9 @@ define(
 		    		// Render data here
 					console.log(data[componentName]);
 				}, this.error);
+                
+               var calendar = new Calendar();
+               this.$el.find('section.calendar').html(calendar.render().el);
 		    },
 
 		    // Render github organization stats

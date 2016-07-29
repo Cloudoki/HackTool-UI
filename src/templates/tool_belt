@@ -1,8 +1,7 @@
 
-<div class="tool-content">
-	<div class="tool_border"> </div>
+<div class="tool-content top-space">
 	<div class="tool_tab" href="">
-		<p class="tool_title">TOOL BELT</p>
+		<a class="tool_title">TOOL BELT</a>
 	</div>
 	<div class="toolbelt_container">
 		<ul>
