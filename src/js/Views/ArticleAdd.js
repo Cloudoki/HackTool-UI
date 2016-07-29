@@ -25,10 +25,14 @@ define(
 		    },
 		    submit: function() {
 		    	// Read simplemde content and title
-		    	var article = JSON.stringify({"title": document.getElementById("title").value, "content": this.mde.value()});
+		    	var article = {
+		    		title: document.getElementById("title").value,
+		    		content: this.mde.value()
+		    	};
 
+		    	console.log(article)
 		    	// add article
-		    	hacktoolSdk.Articles.add(btoa(article));
+		    	hacktoolSdk.Articles.add(article);
 		    }
 		});
 

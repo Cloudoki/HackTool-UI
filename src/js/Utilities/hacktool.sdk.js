@@ -55,14 +55,6 @@ var hacktoolSdk = {
           success(filterRepos(data))
         }).error(error);
       }
-    },
-    list: function (callback) {
-      request({
-          url: 'https://api.github.com/user/orgs',
-          method: 'GET'
-      }).done(function(data) {
-        callback(null, data)
-      }).error(callback);
     }
   },
 
@@ -99,6 +91,24 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/metadata.json',
           method: 'GET'
       }).done(function(data) {
+        hacktoolSdk.readJSON(data.download_url, function(metadata){
+          success(metadata, data.sha)
+        })
+      }).error(error);
+    },
+
+    updateMetadata: function(metadata, sha, success, error) {
+      request({
+        url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/metadata.json',
+        method: 'PUT',
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({
+          message: "publishing new article",
+          content: btoa(JSON.stringify(metadata)),
+          sha: sha
+        })
+      }).done(function(data) {
         hacktoolSdk.readJSON(data.download_url, success)
       }).error(error);
     },
@@ -107,25 +117,32 @@ var hacktoolSdk = {
       hacktoolSdk.Articles.getMetadata(success, error);
     },
 
-    add: function(HTML, success, error) {
-
+    add: function(article, success, error) {
       // Get the metadata first so we know on what ID we should add the new article
-      hacktoolSdk.Articles.getMetadata(function(data){
+      hacktoolSdk.Articles.getMetadata(function(data, sha){
+        // Reads metadata json info
+        var metadata = data;
+        var lastId = metadata.articles.length? metadata.articles[metadata.articles.length-1].id: 0;
 
-        var lastId = data.articles.length? data.articles[data.articles.length-1].id: 0;
-        var article = hacktoolSdk.Articles.prepareArticle(HTML, lastId);
-
+        // Write article in git (new file)
         request({
-            url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/k7y_'+Date.now()+'.json',
+            url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/k7y_'+Date.now()+'.json', //change hardcoded user to logged user
             method: 'PUT',
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
                 message: "publishing new article",
-                content: HTML
+                content: btoa(JSON.stringify(article))
             })
         }).done(function(data) {
-          hacktoolSdk.readJSON(data.download_url, success)
+          metadata.articles.push({
+            title: article.title,
+            intro: article.content.substring(100),
+            created_by: data.content.name.substring(0, data.content.name.lastIndexOf('_')),
+            created_at: data.commit.author.date
+          });
+          metadata.total = metadata.articles.length;
+          hacktoolSdk.Articles.updateMetadata(metadata, sha);
         }).error(error);
       });
     },
