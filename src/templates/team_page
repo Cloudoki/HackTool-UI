@@ -1,1 +1,18 @@
-the team page.
+
+<h1>The Team</h1>
+<p>
+	We are proud to present: The TUI#Hackfridays team. Each high-standing individual on this page pledged to make their hands dirty and the synapses sparking. We are not picky, the Crew may contain Marketeers, Backenders, Frontenders, Lanceers, Managers and other problem solvers. We only demand creativity.
+</p>
+<p>
+	Buccaneers these proud women and men are. Salute!
+</p>
+<div class="row team-members">
+	{{#teamMembers}}
+  		<div class="col-xs-4 col-md-3 member">
+    		<a href="{{html_url}}" target="_blank" class="member-avatar">
+      			<img src="{{avatar_url}}" alt="avatar">
+    		</a>
+    		<a href="{{html_url}}" class="member-name">{{login}}</a>
+  		</div>
+  	{{/teamMembers}}
+</div>

@@ -1,9 +1,10 @@
 /* main scss file */
 
+@import 'base';
 @import 'topNav';
 @import 'dashboardSubNav';
 @import 'tool_belt';
 @import 'calendar';
 @import 'dashboard_posts';
 @import 'structure';
-
+@import 'team';
