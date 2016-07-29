@@ -1,0 +1,27 @@
+#teampage {
+	padding: 40px 0;
+	
+	.team-members {
+
+		.member {
+			text-align: center;
+
+			.member-avatar {
+				max-width: 200px;
+				display: inline-block;
+
+				img {
+					border-radius: 50%;
+					overflow: hidden;
+				}
+			}
+
+			.member-name {
+				display: block;
+				padding: 20px 0;
+				font-size: 2em;
+			}
+		}
+	}
+}
+
