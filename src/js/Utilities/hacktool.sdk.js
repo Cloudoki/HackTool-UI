@@ -36,14 +36,13 @@ var hacktoolSdk = {
 
   Organizations:  {
     Teams: {
-      list: function (success, error) {
+      list: function (team, success, error) {
         request({
-          url: 'https://api.github.com/teams/2052463/members',
+          url: 'https://api.github.com/teams/'+team+'/members',
           method: 'GET'
         }).done(function(data) {
             console.log(data)
             success(data)
-            //callback(null, data)
         }).error(error);
       }
     },
