@@ -139,12 +139,23 @@ var hacktoolSdk = {
             title: article.title,
             intro: article.content.substring(100),
             created_by: data.content.name.substring(0, data.content.name.lastIndexOf('_')),
-            created_at: data.commit.author.date
+            created_at: data.commit.author.date,
+            filename: data.content.name
           });
           metadata.total = metadata.articles.length;
           hacktoolSdk.Articles.updateMetadata(metadata, sha);
         }).error(error);
       });
+    },
+
+    read: function(name, success, error) {
+      request({
+          url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/'+name,
+          method: 'GET'
+      }).done(function(data) {
+        console.log(data)
+        //we need to extract the content of the data and then decode it
+      }).error(error);
     },
 
     prepareArticle: function(HTML, lastId) {

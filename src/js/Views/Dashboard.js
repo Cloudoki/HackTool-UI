@@ -33,20 +33,22 @@ define(
                 var posts = new DasboardPosts();
                this.$el.find('section.dashboard_posts').html(posts.render().el);
             },
-            
+
            renderSubNav:function(){
-               
+
                var dash = new DashboardSubNav();
                this.$el.find('section.subnav').html(dash.render().el);
-               
+
            },
-            
-            
+
+
             // Render article list (from the articles folder)
 
 		    renderArticles: function() {
 
-		    	//hacktoolSdk.Articles.list(function(data){console.log(data)})
+		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
+
+		    	hacktoolSdk.Articles.read("k7y_1469808711483.json", function(data){console.log(data)})
 
 		    },
 
@@ -64,7 +66,7 @@ define(
 		    		// Render data here
 					console.log(data[componentName]);
 				}, this.error);
-                
+
                var calendar = new Calendar();
                this.$el.find('section.calendar').html(calendar.render().el);
 		    },
@@ -82,7 +84,7 @@ define(
 		    		// Render data here
 					console.log(data[componentName]);
 				}, this.error);
-                
+
                 var toolbelt = new ToolBelt();
                this.$el.find('section.toolbelt').html(toolbelt.render().el);
 		    },
