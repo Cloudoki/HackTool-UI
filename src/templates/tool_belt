@@ -1,5 +1,5 @@
 
-<div class="tool-content top-space tabbed-widget">
+<div class="tool-content top-space tabbed-widget {{#edit}}edit{{/edit}}">
 	<div class="tabbed-tab active" href="">
 		<a class="tool_title">TOOL BELT</a>
 	</div>
@@ -12,8 +12,8 @@
 	<div class="toolbelt_container">
 		<div class="edit-only form-group repo-add">
 			<label>Add repo</label>
-			<input type="email" class="form-control" placeholder="Repo name">
-			<input type="email" class="form-control" placeholder="URI">
+			<input type="text" class="form-control" placeholder="Repo name" data-attr="repo-name">
+			<input type="text" class="form-control" placeholder="URI" data-attr="repo-uri">
 		</div>
 		<ul>
 			{{#items}}
