@@ -5,28 +5,21 @@
 		<div class="dash_tab">
 			<a class="dash_title">READ ME</a>
 		</div>
+		<div class="dash_tab">
+			<a class="dash_title" href="#article/new">ADD</a>
+		</div>
 	<div class="dash_container">
+		{{#posts}}
 			<div class="post-display">
-				<h1 class="display-block post-title">Tool Belt Mandarin</h1>
+				<h1 class="display-block post-title" data-id="{{id}}">{{title}}</h1>
 					<div class="post-specs">
 						<img class="img-responsive" src="/images/paper-plane.png">
-						<p class="details-text">Post on February 2016</p>
+						<p class="details-text">Posted on February 2016</p>
 						<img src="/images/folder.png">
 						<p class="details-text">Post in Hackfridays, Tool Belt</p>
 					</div>
-				<p class="display-block post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper metus in lorem rhoncus, quis eleifend est suscipit. Fusce justo diam, dapibus vitae nisi sed, vestibulum lacinia risus. Vestibulum ut ultrices erat. Curabitur turpis nisi, vestibulum quis consequat vitae, porta quis felis. Integer tempor orci vitae diam porta dapibus nec ut felis. Mauris vel vestibulum metus.</p>
-			</div>
-
-			<div class="post-display">
-				<h1 class="display-block post-title">Tool Belt Mandarin</h1>
-					<div class="post-specs">
-						<img class="img-responsive" src="/images/paper-plane.png">
-						<p class="details-text">Post on February 2016</p>
-						<img src="/images/folder.png">
-						<p class="details-text">Post in Hackfridays, Tool Belt</p>
-					</div>
-				<p class="display-block post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper metus in lorem rhoncus, quis eleifend est suscipit. Fusce justo diam, dapibus vitae nisi sed, vestibulum lacinia risus. Vestibulum ut ultrices erat. Curabitur turpis nisi, vestibulum quis consequat vitae, porta quis felis. Integer tempor orci vitae diam porta dapibus nec ut felis. Mauris vel vestibulum metus.</p>
-			</div>
-			
+				<p class="display-block post-text">{{intro}}</p>
+			</div>	
+		{{/posts}}		
 	</div>
 </div>

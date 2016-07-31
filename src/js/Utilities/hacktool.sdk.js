@@ -136,8 +136,9 @@ var hacktoolSdk = {
             })
         }).done(function(data) {
           metadata.articles.push({
+            id: lastId+1,
             title: article.title,
-            intro: article.content.substring(100),
+            intro: article.content.substring(0,100),
             created_by: data.content.name.substring(0, data.content.name.lastIndexOf('_')),
             created_at: data.commit.author.date,
             filename: data.content.name

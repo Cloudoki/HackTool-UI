@@ -15,8 +15,8 @@ define(
 					callback();
 				}.bind(this));
 				
-				// this.User.fetch({error: this.authError.bind(this)});
-				this.User.trigger("activated").bind(this);
+				this.User.Fetch({error: this.authError.bind(this)});
+				// this.User.trigger("activated").bind(this);
 			},
 
 			// Error on API, for example

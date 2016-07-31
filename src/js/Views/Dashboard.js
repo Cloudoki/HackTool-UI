@@ -19,7 +19,6 @@ define(
                 this.$el.html(Mustache.render(Templates.dashboard, {}));
 
                 this.renderSubNav();
-                this.renderArticles();
                 this.renderSocialFeed();
                 this.renderCalendar();
                 this.renderStats();
@@ -30,7 +29,7 @@ define(
             },
 
             renderPosts : function(){
-                var posts = new DasboardPosts();
+              var posts = new DasboardPosts();
                this.$el.find('section.dashboard_posts').html(posts.render().el);
             },
 
@@ -40,17 +39,6 @@ define(
                this.$el.find('section.subnav').html(dash.render().el);
 
            },
-
-
-            // Render article list (from the articles folder)
-
-		    renderArticles: function() {
-
-		    	hacktoolSdk.Articles.list(function(data){console.log(data)})
-
-		    	hacktoolSdk.Articles.read("k7y_1469808711483.json", function(data){console.log(data)})
-
-		    },
 
 		    // Render twitter hashtags (add twitter integration)
 		    renderSocialFeed: function() {
