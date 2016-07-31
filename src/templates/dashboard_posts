@@ -1,6 +1,6 @@
 <div class="dash-content tabbed-widget">
 		<div class="tabbed-tab active">
-			<a class="dash_title">POSTS</a>
+			<a class="dash_title">FEED</a>
 		</div>
 		<div class="tabbed-tab">
 			<a class="dash_title">READ ME</a>

@@ -1,5 +1,5 @@
 define(
-	['Views/BaseView', 'simplemde'],
+	['Views/BaseView', 'simplemde', 'chosen'],
 	function (BaseView, SimpleMDE)
 	{
 		var ArticleAdd = BaseView.extend({
@@ -16,6 +16,9 @@ define(
 		    {
 		    	this.$el.html(Mustache.render(Templates.article_add, {}));
 		    	this.mde = null;
+
+		    	this.$el.find('.chosen-select').chosen({width: "100%", disable_search_threshold: 10});
+
 		    	// Temporary hack to initialize the editor
 		    	setTimeout(function(){
 		    		this.mde = new SimpleMDE({element: document.getElementById("mdeditor")})

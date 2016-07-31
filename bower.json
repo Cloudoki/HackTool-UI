@@ -20,7 +20,8 @@
     "backbone-auth": "https://github.com/Cloudoki/backbone-auth.git",
     "bower": "*",
     "install": "~1.0.4",
-    "markdown": "~0.5.0"
+    "markdown": "~0.5.0",
+    "chosen": "~1.6.1"
   },
   "dependencies": {
     "simplemde": "~1.11.2"

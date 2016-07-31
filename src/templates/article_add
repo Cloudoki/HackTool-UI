@@ -1,4 +1,22 @@
-<input id="title" type="text"/>
-<textarea id="mdeditor"></textarea>
+<div class="content-wrapper">
+	<h2>Add content</h2>
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-4">
+				<label>Name</label>
+				<input id="title" type="text" class="form-control"/>
+			</div>
+			<div class="col-sm-3">
+				<label>Category</label>
+				<select class="chosen-select">
+					<option value="asd">Category 1</option>
+					<option value="asd">Category 2</option>
+				</select>
+			</div>
+		</div>
+		<br>
+		<textarea id="mdeditor"></textarea>
 
-<button class="submit">Submit</button>
+		<button class="submit">Submit</button>
+	</div>
+</div>

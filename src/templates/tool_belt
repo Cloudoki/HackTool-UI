@@ -1,7 +1,7 @@
 
 <div class="tool-content top-space tabbed-widget {{#edit}}edit{{/edit}}">
 	<div class="tabbed-tab active" href="">
-		<a class="tool_title">TOOL BELT</a>
+		<a class="tool_title">REPOS</a>
 	</div>
 	<div class="tabbed-tab view-only" data-action="edit">
 		<a class="tool_title"><i class="fa fa-pencil" aria-hidden="true"></i></a>

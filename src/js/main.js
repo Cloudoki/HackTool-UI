@@ -18,7 +18,8 @@ require.config({
       "mustache": pathname+"vendor/mustache.js/mustache",
       "bootstrap": pathname+"vendor/bootstrap/dist/js/bootstrap.min",
       "simplemde": pathname+"vendor/simplemde/dist/simplemde.min",
-      "markdown": pathname+"vendor/markdown/lib/markdown"
+      "markdown": pathname+"vendor/markdown/lib/markdown",
+      "chosen": pathname+"vendor/chosen/chosen.jquery"
   },
 
   urlArgs: "bust=" +  (new Date()).getTime()
