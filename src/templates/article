@@ -1,0 +1,4 @@
+<div class="content-wrapper">
+	<h1>{{post.title}}</h1>
+	<div class="article-content"></div>
+</div>

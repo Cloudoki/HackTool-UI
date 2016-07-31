@@ -154,9 +154,26 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/'+name,
           method: 'GET'
       }).done(function(data) {
-        console.log(data)
+        hacktoolSdk.readJSON(data.download_url, success)
         //we need to extract the content of the data and then decode it
       }).error(error);
+    },
+
+    get: function(id, success, error) {
+
+      hacktoolSdk.Articles.getMetadata(function(data){
+
+        var filename = null;
+
+        for (var n in data.articles) {
+          if (data.articles[n].id == id) {
+            filename = data.articles[n].filename
+            break;
+          }
+        }
+        console.log("File: ", filename);
+        hacktoolSdk.Articles.read(filename, success, error);
+      });
     },
 
     prepareArticle: function(HTML, lastId) {

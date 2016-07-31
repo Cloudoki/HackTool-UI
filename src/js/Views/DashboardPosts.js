@@ -2,8 +2,8 @@
 // THE ADMIN CAN EDIT THIS PAGE
 
 define(
-	['Views/BaseView'],
-	function (BaseView)
+	['Views/BaseView', 'Collections/Posts'],
+	function (BaseView, Posts)
 	{
 		var Calendar = BaseView.extend({
 
@@ -30,6 +30,8 @@ define(
 
 		    	hacktoolSdk.Articles.list(function(data){
 
+		    		Application.Session.Posts = new Posts(data.articles);
+
 		    		this.posts = data.articles;
 		    		this.render(true);
 		    		
@@ -40,10 +42,9 @@ define(
 		    viewPost: function(e) {
 
 		    	var filename = $(e.currentTarget).data('filename');
+		    	var id = $(e.currentTarget).data('id');
 
-		    	console.log(title);
-
-		    	Application.Router.navigate('article/'+title, true)
+		    	Application.Router.navigate('article/'+id, true);
 		    }
 		});
 

@@ -1,7 +1,7 @@
 
 define(
-	['Models/User'],
-	function (User)
+	['Models/User', 'Collections/Posts'],
+	function (User, Posts)
 	{
 		var Session = {
 			
@@ -10,6 +10,7 @@ define(
 			loadEssentialData : function (callback)
 			{	
 				this.User = new User();
+				this.Posts = new Posts();
 
 				this.User.once("activated", function () {	
 					callback();

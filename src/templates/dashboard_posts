@@ -6,7 +6,7 @@
 			<a class="dash_title">READ ME</a>
 		</div>
 		<div class="dash_tab">
-			<a class="dash_title" href="#article/new">ADD</a>
+			<a class="dash_title" href="#newarticle">ADD</a>
 		</div>
 	<div class="dash_container">
 		{{#posts}}
