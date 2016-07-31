@@ -29,3 +29,19 @@ img {
         }
 	}
 }
+
+.edit-only, .edit-inline-only {
+	display: none !important;
+}
+
+.edit {
+	.edit-only {
+		display: block !important;
+	}
+	.edit-inline-only {
+		display: inline-block !important;
+	}
+	.view-only {
+		display: none;
+	}
+}

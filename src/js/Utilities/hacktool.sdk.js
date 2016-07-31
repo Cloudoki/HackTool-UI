@@ -79,8 +79,24 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/components/'+component+'.json',
           method: 'GET'
       }).done(function(data) {
-        hacktoolSdk.readJSON(data.download_url, success)
+        hacktoolSdk.readJSON(data.download_url, function(result){
+          success(result, data.sha)
+        })
       }).error(error);
+    },
+
+    update: function(component, content, success, error) {
+      request({
+        url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/components/'+component+'.json',
+        method: 'PUT',
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({
+          message: "updating toolbelt repos",
+          content: btoa(JSON.stringify(content.content)),
+          sha: content.sha
+        })
+      }).done(success).error(error);
     }
   },
 

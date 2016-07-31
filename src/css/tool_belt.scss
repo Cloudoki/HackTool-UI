@@ -10,13 +10,20 @@
     	margin-top: -1px;
 	}
 
-//	.tool_border {
-//		width: 100px;
-//		height: 4px;
-//		background-color: #ef4b2a;
-//		border-radius: 5px;
-//		margin: 20px 20px 0px 20px;
-//	}
+	.repo-add {
+		padding: 15px;
+		border-bottom: 1px solid #eee;
+
+		input {
+			margin-bottom: 10px;
+		}
+	}
+
+	.repo-remove {
+		position: absolute;
+		right: 20px;
+		top: 15px;
+	}
 
 	.tool_title {
 		font-family: $font-stack;
@@ -44,10 +51,11 @@
 	}
 
 	.display {
-		padding: 15px 10px 0px 0px;
+		padding: 15px 45px 0px 0px;
 		font-family: $font-stack;
 	    color: $grey-color;
 	    font-size: 16px;
+	    position: relative;
 	}
 
 	.git-logo {

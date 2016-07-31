@@ -64,6 +64,8 @@ gulp.task('copy:scripts', function() {
             dirs.source+'/vendor/chosen/chosen-sprite@2x.png',
             dirs.source+'/vendor/simplemde/dist/simplemde.min.js',
             dirs.source+'/vendor/markdown/lib/markdown.js',
+            dirs.source+'/vendor/font-awesome/css/font-awesome.min.css',
+            dirs.source+'/vendor/font-awesome/fonts/*',
             dirs.source+'/js/**/*'
         ]).pipe(copy(dirs.release, {prefix: 1}));
 });
