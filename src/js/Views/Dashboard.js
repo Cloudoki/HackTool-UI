@@ -66,15 +66,8 @@ define(
 		    // Render ToolBelt from toolbelt.json
 		    renderToolBelt: function() {
 
-		    	var componentName = "toolbelt";
-
-		    	hacktoolSdk.Components.get(componentName, function(data) {
-		    		// Render data here
-					console.log(data[componentName]);
-				}, this.error);
-
-                var toolbelt = new ToolBelt();
-               this.$el.find('section.toolbelt').html(toolbelt.render().el);
+          var toolbelt = new ToolBelt();
+          this.$el.find('section.toolbelt').html(toolbelt.render().el);          
 		    },
 		});
 

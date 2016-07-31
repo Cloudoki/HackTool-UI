@@ -1,18 +1,19 @@
 
-<div class="tool-content top-space">
-	<div class="tool_tab" href="">
+<div class="tool-content top-space tabbed-widget">
+	<div class="tabbed-tab active" href="">
 		<a class="tool_title">TOOL BELT</a>
+	</div>
+	<div class="tabbed-tab" href="">
+		<a class="tool_title">EDIT</a>
 	</div>
 	<div class="toolbelt_container">
 		<ul>
+			{{#items}}
 			<div class="display">
 				<img src="/images/gitlogo-n.png" alt="Git logo" class="git-logo">
-				<a href="#">Api-cenas do git</a>
-			</div>
-			<div class="display">
-				<img src="/images/gitlogo-n.png" alt="Git logo" class="git-logo">
-				<a href="#">Api-cenas do git</a>
+				<a href="{{url}}" target="_blank">{{name}}</a>
 			</div>	
+			{{/items}}
 		</ul>
 	</div>
 </div>

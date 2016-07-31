@@ -1,11 +1,11 @@
-<div class="dash-content">
-		<div class="dash_tab active">
+<div class="dash-content tabbed-widget">
+		<div class="tabbed-tab active">
 			<a class="dash_title">POSTS</a>
 		</div>
-		<div class="dash_tab">
+		<div class="tabbed-tab">
 			<a class="dash_title">READ ME</a>
 		</div>
-		<div class="dash_tab">
+		<div class="tabbed-tab">
 			<a class="dash_title" href="#newarticle">ADD</a>
 		</div>
 	<div class="dash_container">

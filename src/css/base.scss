@@ -16,3 +16,16 @@ img {
 	max-width: 1000px;
 	margin: 0 auto;
 }
+
+.tabbed-widget {
+	.tabbed-tab {
+		background-color: #dddddd;
+		width: 100px;
+		display: inline-block;
+        
+        &.active {
+            background-color: #ffffff;
+            border-top: 4px solid #ef4b2a;
+        }
+	}
+}
