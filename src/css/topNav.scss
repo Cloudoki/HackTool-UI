@@ -69,17 +69,13 @@
             }
 
             .user_image {
-
+                overflow: hidden;
                 display: inline-block;
                 vertical-align: middle;
                 width: 60px;
                 height: 60px;
                 background-color: #fff;
                 border-radius: 100%;
-
-                img {
-                    max-width: 100%;
-                }
             }
             
         }

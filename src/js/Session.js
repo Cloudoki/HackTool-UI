@@ -16,7 +16,6 @@ define(
 				}.bind(this));
 				
 				this.User.Fetch({error: this.authError.bind(this)});
-				// this.User.trigger("activated").bind(this);
 			},
 
 			// Error on API, for example

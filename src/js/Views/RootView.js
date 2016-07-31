@@ -25,7 +25,13 @@ define(
 			},
 
 			renderNav: function() {
-				$('header').html(Mustache.render(Templates.topnav, {}));
+
+				var params = {
+					user: Application.Session.User.attributes,
+					organization: Application.Organization
+				};
+
+				$('header').html(Mustache.render(Templates.topnav, params));
 			}
 		});
 
