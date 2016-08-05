@@ -12,10 +12,10 @@ define(
 
 			initialize: function(options) {
 
-			},	
+			},
 
 		    render: function(refresh)
-		    {	
+		    {
 		    	this.$el.html(Mustache.render(Templates.team_page, {teamMembers: this.teamMembers}));
 
 		    	if (!refresh)
@@ -26,8 +26,8 @@ define(
 
 		    getTeam: function() {
 
-		    	hacktoolSdk.Organizations.Teams.list("2052463", function(teamMembers) {
-		    		
+		    	hacktoolSdk.Organizations.Teams.list(Application.Team, function(teamMembers) {
+
 		    		this.teamMembers = teamMembers;
 		    		this.render(true);
 

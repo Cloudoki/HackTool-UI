@@ -13,14 +13,14 @@ define(
 				'click [data-action=remove]': 'removeRepo',
 				'focus .repo-add input': 'enableSubmit',
 				'blur .repo-add input': 'disableSubmit'
-			},	
+			},
 
 			initialize: function(options) {
 
-			},	
+			},
 
 		    render: function(refresh, edit)
-		    {	
+		    {
 		    	this.$el.html(Mustache.render(Templates.tool_belt, {items: this.toolBelt, edit: edit}));
 
 		    	if (!refresh)
@@ -31,7 +31,7 @@ define(
 
 		    getData: function() {
 
-		    	hacktoolSdk.Components.get("toolbelt", function(data, sha) {console.log(sha)
+		    	hacktoolSdk.Components.get(Application.Organization, Application.Repo, "toolbelt", function(data, sha) {console.log(sha)
 		    		this.toolBelt = data;
 		    		this.sha = sha;
 		    		this.render(true);
@@ -93,7 +93,7 @@ define(
 
 		    save: function(success, error) {
 
-		    	hacktoolSdk.Components.update('toolbelt', {
+		    	hacktoolSdk.Components.update(Application.Organization, Application.Repo, 'toolbelt', {
 		    		content: this.toolBelt,
 		    		sha: this.sha
 		    	}, function(a){

@@ -9,15 +9,15 @@ define(
 
 			events: {
 				'click .post-title': 'viewPost'
-			},	
+			},
 			posts: [],
 
 			initialize: function(options) {
 
-			},	
+			},
 
 		    render: function(refresh)
-		    {	
+		    {
 		    	this.$el.html(Mustache.render(Templates.dashboard_posts, {posts: this.posts}));
 
 		    	if (!refresh)
@@ -28,13 +28,13 @@ define(
 
 		    getPosts: function() {
 
-		    	hacktoolSdk.Articles.list(function(data){
+		    	hacktoolSdk.Articles.list(Application.Organization, Application.Repo, function(data){
 
 		    		Application.Session.Posts = new Posts(data.articles);
 
 		    		this.posts = data.articles;
 		    		this.render(true);
-		    		
+
 		    	}.bind(this));
 		    	// hacktoolSdk.Articles.read("k7y_1469808711483.json", function(data){console.log(data)})
 		    },

@@ -52,7 +52,7 @@ define(
 
 		    	var componentName = "calendar";
 
-		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    	hacktoolSdk.Components.get(Application.Organization, Application.Repo, componentName, function(data) {
 		    		// Render data here
 					console.log(data[componentName]);
 				}, this.error);
@@ -69,7 +69,7 @@ define(
 		    renderToolBelt: function() {
 
           var toolbelt = new ToolBelt();
-          this.$el.find('section.toolbelt').html(toolbelt.render().el);          
+          this.$el.find('section.toolbelt').html(toolbelt.render().el);
 		    },
 		});
 
