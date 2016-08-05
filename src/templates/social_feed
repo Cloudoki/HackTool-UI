@@ -1,0 +1,9 @@
+
+<div class="tabbed-widget social-feed">
+	<div class="tabbed-tab active" href="">
+		<a class="tabbed-widget-title">FEED</a>
+	</div>
+	<div class="tabbed-widget-container">
+		<a class="twitter-timeline" data-height="500" href="https://twitter.com/{{handle}}">Tweets by TUIHackfridays</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+</div>

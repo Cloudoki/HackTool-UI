@@ -4,5 +4,8 @@ define({
 	team: "2052463",
 	admins: [
 		{name: "Rui Molefas", email: "molefas@gmail.com", username: "Muffles"}
-	]
+	],
+	social: {
+		twitter_handle: "TUIHackfridays"
+	}
 });

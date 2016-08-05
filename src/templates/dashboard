@@ -6,11 +6,9 @@
 </div>
 <div class="col-sm-4">
 
-   <section class="calendar"></section>
+   <section class="feed"></section>
    <section class="toolbelt"></section>
-
-   <a class="twitter-timeline" data-height="600" href="https://twitter.com/TUIHackfridays">Tweets by TUIHackfridays</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+   <section class="calendar"></section>
 
 </div>
 </div>
