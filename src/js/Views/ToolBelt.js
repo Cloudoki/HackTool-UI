@@ -32,7 +32,7 @@ define(
 		    getData: function() {
 
 		    	hacktoolSdk.Components.get("toolbelt", function(data, sha) {
-		    		this.toolBelt = data.toolbelt;
+		    		this.toolBelt = data;
 		    		this.sha = sha;
 		    		this.render(true);
 				}.bind(this), this.error);
