@@ -7,7 +7,7 @@ define(
 	{
 		var Article = BaseView.extend({
 
-			events: {},	
+			events: {},
 			id: 'article',
 
 			initialize: function(options) {
@@ -18,10 +18,10 @@ define(
 
 				if (!this.post)
 					this.post = new Post({id: this.articleId});
-			},	
+			},
 
 		    render: function(refresh)
-		    {	
+		    {
 		    	this.$el.html(Mustache.render(Templates.article, {post: this.post.attributes}));
 
 		    	if (!this.post.attributes.content && !refresh)
@@ -36,19 +36,19 @@ define(
 		    getFile: function() {
 
 		    	if (!this.post.attributes.filename)
-		    		hacktoolSdk.Articles.get(this.post.id, function(data){
+		    		hacktoolSdk.Articles.get(Application.Organization, Application.Repo, this.post.id, function(data){
 		    			$.extend(this.post.attributes, data);
 		    			Application.Session.Posts.add(this.post);
 
 		    			this.render(true);
 		    		}.bind(this));
 
-		    	else 
-					hacktoolSdk.Articles.read(this.post.attributes.filename, function(data){
+		    	else
+					hacktoolSdk.Articles.read(Application.Organization, Application.Repo, this.post.attributes.filename, function(data){
 		    			$.extend(this.post.attributes, data);
 
 		    			this.render(true);
-		    		}.bind(this));		
+		    		}.bind(this));
 		    }
 		});
 

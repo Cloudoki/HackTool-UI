@@ -1,6 +1,6 @@
 define(
-    ['Views/BaseView', 'Views/ToolBelt', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts'],
-    function (BaseView, ToolBelt, DashboardSubNav, Calendar, DasboardPosts)
+    ['Views/BaseView', 'Views/ToolBelt', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts', 'Views/SocialFeed'],
+    function (BaseView, ToolBelt, DashboardSubNav, Calendar, DasboardPosts, SocialFeed)
     {
         var Dashboard = BaseView.extend({
 
@@ -43,6 +43,8 @@ define(
 		    // Render twitter hashtags (add twitter integration)
 		    renderSocialFeed: function() {
 
+          var feed = new SocialFeed({handle: Application.config.social.twitter_handle});
+          this.$el.find('section.feed').html(feed.render().el);
 		    },
 
 		    // Render calendar data (from calendar.json)
@@ -50,7 +52,7 @@ define(
 
 		    	var componentName = "calendar";
 
-		    	hacktoolSdk.Components.get(componentName, function(data) {
+		    	hacktoolSdk.Components.get(Application.Organization, Application.Repo, componentName, function(data) {
 		    		// Render data here
 					console.log(data[componentName]);
 				}, this.error);
@@ -67,7 +69,7 @@ define(
 		    renderToolBelt: function() {
 
           var toolbelt = new ToolBelt();
-          this.$el.find('section.toolbelt').html(toolbelt.render().el);          
+          this.$el.find('section.toolbelt').html(toolbelt.render().el);
 		    },
 		});
 

@@ -1,14 +1,4 @@
 .tool-content {
-    
-    &.top-space {
-        margin-top: 30px;
-    }
-
-	.toolbelt_container {
-    	background-color: #ffffff;  
-    	border-top: 1px solid #dddddd;
-    	margin-top: -1px;
-	}
 
 	.repo-add {
 		padding: 15px;
@@ -23,17 +13,6 @@
 		position: absolute;
 		right: 20px;
 		top: 15px;
-	}
-
-	.tool_title {
-		font-family: $font-stack;
-	    font-weight: 600;
-	    text-transform: uppercase;
-	    font-size: 15px;
-	    color: $grey-color;
-	    text-align: center;
-	    padding: 8px;
-        display: block;
 	}
 
 	a {
@@ -63,5 +42,8 @@
 		margin-right: 15px;
 	}
 
+	ul {
+		padding: 25px ;
+	}
 }
 

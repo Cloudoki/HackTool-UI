@@ -18,6 +18,26 @@ img {
 }
 
 .tabbed-widget {
+
+	margin-bottom: 30px;
+
+	.tabbed-widget-container {
+		background-color: #ffffff;  
+    	border-top: 1px solid #dddddd;
+    	margin-top: -1px;
+	}
+
+	.tabbed-widget-title {
+		font-family: $font-stack;
+	    font-weight: 600;
+	    text-transform: uppercase;
+	    font-size: 15px;
+	    color: $grey-color;
+	    text-align: center;
+	    padding: 8px;
+        display: block;
+	}
+
 	.tabbed-tab {
 		background-color: #dddddd;
 		width: 100px;

@@ -64,7 +64,6 @@ var hacktoolSdk = {
           url: 'https://api.github.com/user',
           method: 'GET'
       }).done(function(data) {
-        console.log(data)
         hacktoolSdk.user = data;
         success(data)
       }).error(error);
@@ -74,9 +73,9 @@ var hacktoolSdk = {
   Components: {
 
     // Global GET function for every json file in the repo
-    get: function (component, success, error) {
+    get: function (organization, int_repo, component, success, error) {
       request({
-          url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/components/'+component+'.json',
+          url: 'https://api.github.com/repos/'+organization+'/'+int_repo+'/contents/components/'+component+'.json',
           method: 'GET'
       }).done(function(data) {
         hacktoolSdk.readJSON(data.download_url, function(result){
@@ -85,9 +84,9 @@ var hacktoolSdk = {
       }).error(error);
     },
 
-    update: function(component, content, success, error) {
+    update: function(organization, int_repo, component, content, success, error) {
       request({
-        url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/components/'+component+'.json',
+        url: 'https://api.github.com/repos/'+organization+'/'+int_repo+'/contents/components/'+component+'.json',
         method: 'PUT',
         dataType: "json",
         contentType: "application/json",
@@ -102,9 +101,9 @@ var hacktoolSdk = {
 
   Articles: {
 
-    getMetadata: function(success, error) {
+    getMetadata: function(organization, int_repo, success, error) {
       request({
-          url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/metadata.json',
+          url: 'https://api.github.com/repos/'+organization+'/'+int_repo+'/contents/articles/metadata.json',
           method: 'GET'
       }).done(function(data) {
         hacktoolSdk.readJSON(data.download_url, function(metadata){
@@ -113,9 +112,9 @@ var hacktoolSdk = {
       }).error(error);
     },
 
-    updateMetadata: function(metadata, sha, success, error) {
+    updateMetadata: function(organization, int_repo, metadata, sha, success, error) {
       request({
-        url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/metadata.json',
+        url: 'https://api.github.com/repos/'+organization+'/'+int_repo+'/contents/articles/metadata.json',
         method: 'PUT',
         dataType: "json",
         contentType: "application/json",
@@ -129,20 +128,20 @@ var hacktoolSdk = {
       }).error(error);
     },
 
-    list: function(success, error) {
-      hacktoolSdk.Articles.getMetadata(success, error);
+    list: function(organization, int_repo, success, error) {
+      hacktoolSdk.Articles.getMetadata(organization, int_repo, success, error);
     },
 
-    add: function(article, success, error) {
+    add: function(organization, int_repo, article, success, error) {
       // Get the metadata first so we know on what ID we should add the new article
-      hacktoolSdk.Articles.getMetadata(function(data, sha){
+      hacktoolSdk.Articles.getMetadata(organization, int_repo, function(data, sha){
         // Reads metadata json info
         var metadata = data;
         var lastId = metadata.articles.length? metadata.articles[metadata.articles.length-1].id: 0;
 
         // Write article in git (new file)
         request({
-            url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/k7y_'+Date.now()+'.json', //change hardcoded user to logged user
+            url: 'https://api.github.com/repos/'+organization+'/'+int_repo+'/contents/articles/'+hacktoolSdk.user.login+'_'+Date.now()+'.json', //change hardcoded user to logged user
             method: 'PUT',
             dataType: "json",
             contentType: "application/json",
@@ -160,14 +159,14 @@ var hacktoolSdk = {
             filename: data.content.name
           });
           metadata.total = metadata.articles.length;
-          hacktoolSdk.Articles.updateMetadata(metadata, sha);
+          hacktoolSdk.Articles.updateMetadata(organization, int_repo, metadata, sha);
         }).error(error);
       });
     },
 
-    read: function(name, success, error) {
+    read: function(organization, int_repo, name, success, error) {
       request({
-          url: 'https://api.github.com/repos/Cloudoki/_hacktool/contents/articles/'+name,
+          url: 'https://api.github.com/repos/'+organization+'/'+int_repo+'/contents/articles/'+name,
           method: 'GET'
       }).done(function(data) {
         hacktoolSdk.readJSON(data.download_url, success)
