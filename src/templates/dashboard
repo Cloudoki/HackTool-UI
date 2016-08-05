@@ -2,12 +2,15 @@
 
 <div class="container-fluid spaces">
    <div class="col-sm-8">
-   <section class="dashboard_posts"></section> 
+   <section class="dashboard_posts"></section>
 </div>
 <div class="col-sm-4">
-   
+
    <section class="calendar"></section>
    <section class="toolbelt"></section>
-    
-</div> 
+
+   <a class="twitter-timeline" data-height="600" href="https://twitter.com/TUIHackfridays">Tweets by TUIHackfridays</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+</div>
 </div>
