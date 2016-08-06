@@ -15,5 +15,17 @@ define({
 	},
 	content: {
 		categories: [{name: 'Tool Belt'}]
+	},
+	project: {
+		name: "TUI HackFridays",
+		description: "A description!",
+		time: {
+			date: "20 September 2016",
+			time: "09:00 (UTC+1)"
+		},
+		location: {
+			street: "Amazing street, nº1",
+			place: "Company headquarters"
+		}
 	}
 });

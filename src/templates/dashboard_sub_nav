@@ -4,24 +4,24 @@
         <h1>What</h1>
         <div class="break"></div>
         <div class="description">
-            <h2># Project Name</h2>
-            A short description goes here
+            <h2># {{project.name}}</h2>
+            {{project.description}}
         </div>
     </section>
     <section class="subnav_slot col-sm-4 center">
         <h1>When</h1>
         <div class="break"></div>
         <div class="description">
-            20 September 2016 <br>
-            09:00(UTC +1)
+            {{project.time.date}} <br>
+            {{project.time.time}}
         </div>
     </section>
     <section class="subnav_slot col-sm-4">
         <h1>Where</h1>
         <div class="break"></div>
         <div class="description">
-            Amazing street, nº1<br>
-            Company headquarters
+            {{project.location.street}}<br>
+            {{project.location.place}}
         </div>
     </section>
     

@@ -15,7 +15,7 @@ define(
 
 		    render: function(){	
                 
-		    	this.$el.html(Mustache.render(Templates.dashboard_sub_nav, {}))
+		    	this.$el.html(Mustache.render(Templates.dashboard_sub_nav, {project: Application.config.project}))
 
 		        return this;
 		    }
