@@ -36,7 +36,7 @@ define(
 		    getFile: function() {
 
 		    	if (!this.post.attributes.filename)
-		    		hacktoolSdk.Articles.get(Application.Organization, Application.Repo, this.post.id, function(data){
+		    		hacktoolSdk.Articles.get(this.post.id, function(data){
 		    			$.extend(this.post.attributes, data);
 		    			Application.Session.Posts.add(this.post);
 
@@ -44,7 +44,7 @@ define(
 		    		}.bind(this));
 
 		    	else
-					hacktoolSdk.Articles.read(Application.Organization, Application.Repo, this.post.attributes.filename, function(data){
+					hacktoolSdk.Articles.read(this.post.attributes.filename, function(data){
 		    			$.extend(this.post.attributes, data);
 
 		    			this.render(true);

@@ -31,7 +31,7 @@ define(
 
 		    getData: function() {
 
-		    	hacktoolSdk.Components.get(Application.Organization, Application.Repo, "toolbelt", function(data, sha) {console.log(sha)
+		    	hacktoolSdk.Components.get("toolbelt", function(data, sha) {console.log(sha)
 		    		this.toolBelt = data;
 		    		this.sha = sha;
 		    		this.render(true);
@@ -93,7 +93,7 @@ define(
 
 		    save: function(success, error) {
 
-		    	hacktoolSdk.Components.update(Application.Organization, Application.Repo, 'toolbelt', {
+		    	hacktoolSdk.Components.update('toolbelt', {
 		    		content: this.toolBelt,
 		    		sha: this.sha
 		    	}, function(a){

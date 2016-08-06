@@ -28,7 +28,7 @@ define(
 
 		    getPosts: function() {
 
-		    	hacktoolSdk.Articles.list(Application.Organization, Application.Repo, function(data){
+		    	hacktoolSdk.Articles.list(function(data){
 
 		    		Application.Session.Posts = new Posts(data.articles);
 

@@ -35,7 +35,7 @@ define(
 
 		    	console.log(article)
 		    	// add article
-		    	hacktoolSdk.Articles.add(Application.Organization, Application.Repo, article);
+		    	hacktoolSdk.Articles.add(article);
 		    }
 		});
 

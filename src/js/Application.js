@@ -13,10 +13,9 @@ define(
 				// Load configs
 				Application.config = config;
 				Application.Api = config.apiurl;
-				Application.Organization = config.organizations;
-				Application.Team = config.team;
-				Application.Repo = config.int_repo;
 				Application.Session = Session;
+
+				hacktoolSdk.init(config.git);
 
 				if (this.authentication) {
 					this.authenticate();
