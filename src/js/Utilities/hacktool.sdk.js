@@ -139,6 +139,23 @@ var hacktoolSdk = {
       hacktoolSdk.Articles.getMetadata(success, error);
     },
 
+    listCategory: function(category, success, error) {
+      hacktoolSdk.Articles.filter('category', category, success, error);
+    },
+
+    listByUser: function(user, success, error) {
+      hacktoolSdk.Articles.filter('created_by', user, success, error);
+    },
+
+    filter: function(field, value, success, error) {
+      var params = {};
+      params[field] = value;
+
+      hacktoolSdk.Articles.getMetadata(function(data){
+        success(_.where(data.articles, params));
+      });
+    },
+
     add: function(article, success, error) {
       // Get the metadata first so we know on what ID we should add the new article
       hacktoolSdk.Articles.getMetadata(function(data, sha){
@@ -146,9 +163,11 @@ var hacktoolSdk = {
         var metadata = data;
         var lastId = metadata.articles.length? metadata.articles[metadata.articles.length-1].id: 0;
 
+        article.created_by = hacktoolSdk.user.login;
+
         // Write article in git (new file)
         request({
-            url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+hacktoolSdk.user.login+'_'+Date.now()+'.json', //change hardcoded user to logged user
+            url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+hacktoolSdk.user.login+'_'+Date.now()+'.json',
             method: 'PUT',
             dataType: "json",
             contentType: "application/json",
@@ -161,12 +180,13 @@ var hacktoolSdk = {
             id: lastId+1,
             title: article.title,
             intro: article.content.substring(0,100),
-            created_by: data.content.name.substring(0, data.content.name.lastIndexOf('_')),
+            created_by: article.created_by,
             created_at: data.commit.author.date,
-            filename: data.content.name
+            filename: data.content.name,
+            category: article.category
           });
           metadata.total = metadata.articles.length;
-          hacktoolSdk.Articles.updateMetadata(metadata, sha);
+          hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error);
         }).error(error);
       });
     },
@@ -196,16 +216,6 @@ var hacktoolSdk = {
         console.log("File: ", filename);
         hacktoolSdk.Articles.read(filename, success, error);
       });
-    },
-
-    prepareArticle: function(HTML, lastId) {
-
-      introLength = 200;
-
-      return {
-        id: lastId +1,
-        content: HTML
-      }
     }
   }
 
