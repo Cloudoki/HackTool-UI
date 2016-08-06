@@ -30,13 +30,12 @@ define(
 
 		    	hacktoolSdk.Articles.list(function(data){
 
-		    		Application.Session.Posts = new Posts(data.articles);
+		    		Application.Session.Posts.set(data.articles);
 
-		    		this.posts = data.articles;
+		    		this.posts = Application.Session.Posts.models;
 		    		this.render(true);
 
 		    	}.bind(this));
-		    	// hacktoolSdk.Articles.read("k7y_1469808711483.json", function(data){console.log(data)})
 		    },
 
 		    viewPost: function(e) {

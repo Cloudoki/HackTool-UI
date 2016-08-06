@@ -48,7 +48,6 @@ var hacktoolSdk = {
           url: 'https://api.github.com/teams/'+hacktoolSdk.team+'/members',
           method: 'GET'
         }).done(function(data) {
-            console.log(data)
             success(data)
         }).error(error);
       }

@@ -8,9 +8,11 @@
 			</div>
 			<div class="col-sm-3">
 				<label>Category</label>
-				<select class="chosen-select">
-					<option value="asd">Category 1</option>
-					<option value="asd">Category 2</option>
+				<select class="chosen-select category">
+					<option value="Hackfridays">Hackfridays</option>
+					{{#categories}}
+						<option value="{{name}}">{{name}}</option>
+					{{/categories}}
 				</select>
 			</div>
 		</div>

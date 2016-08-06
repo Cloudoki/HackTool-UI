@@ -2,23 +2,23 @@
 		<div class="tabbed-tab active">
 			<a class="dash_title">FEED</a>
 		</div>
-		<div class="tabbed-tab">
+		<!-- <div class="tabbed-tab">
 			<a class="dash_title">READ ME</a>
-		</div>
+		</div> -->
 		<div class="tabbed-tab">
 			<a class="dash_title" href="#newarticle">ADD</a>
 		</div>
 	<div class="dash_container">
 		{{#posts}}
 			<div class="post-display">
-				<h1 class="display-block post-title" data-id="{{id}}">{{title}}</h1>
+				<h1 class="display-block post-title" data-id="{{id}}">{{attributes.title}}</h1>
 					<div class="post-specs">
 						<img class="img-responsive" src="/images/paper-plane.png">
-						<p class="details-text">Posted on February 2016</p>
+						<p class="details-text">Posted on {{created_at}}</p>
 						<img src="/images/folder.png">
-						<p class="details-text">Post in Hackfridays, Tool Belt</p>
+						<p class="details-text">Post in {{attributes.category}}, by {{attributes.created_by}}</p>
 					</div>
-				<p class="display-block post-text">{{intro}}</p>
+				<p class="display-block post-text">{{attributes.intro}}</p>
 			</div>	
 		{{/posts}}		
 	</div>

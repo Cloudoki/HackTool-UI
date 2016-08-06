@@ -66,6 +66,8 @@ gulp.task('copy:scripts', function() {
             dirs.source+'/vendor/markdown/lib/markdown.js',
             dirs.source+'/vendor/font-awesome/css/font-awesome.min.css',
             dirs.source+'/vendor/font-awesome/fonts/*',
+            dirs.source+'/vendor/moment/min/moment.min.js',
+            dirs.source+'/vendor/moment-timezone/builds/moment-timezone-with-data.min.js',
             dirs.source+'/js/**/*'
         ]).pipe(copy(dirs.release, {prefix: 1}));
 });

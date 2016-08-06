@@ -26,7 +26,7 @@ define(
 
 		    getTeam: function() {
 
-		    	hacktoolSdk.Organizations.Teams.list(Application.Team, function(teamMembers) {
+		    	hacktoolSdk.Organizations.Teams.list(function(teamMembers) {
 
 		    		this.teamMembers = teamMembers;
 		    		this.render(true);

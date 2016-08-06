@@ -19,7 +19,9 @@ require.config({
       "bootstrap": pathname+"vendor/bootstrap/dist/js/bootstrap.min",
       "simplemde": pathname+"vendor/simplemde/dist/simplemde.min",
       "markdown": pathname+"vendor/markdown/lib/markdown",
-      "chosen": pathname+"vendor/chosen/chosen.jquery"
+      "chosen": pathname+"vendor/chosen/chosen.jquery",
+      "moment": pathname+'vendor/moment/min/moment.min',
+      "moment_timezone": pathname+'vendor/moment-timezone/builds/moment-timezone-with-data.min',
   },
 
   urlArgs: "bust=" +  (new Date()).getTime()

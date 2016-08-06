@@ -12,5 +12,8 @@ define({
 	},
 	social: {
 		twitter_handle: "TUIHackfridays"
+	},
+	content: {
+		categories: [{name: 'Tool Belt'}]
 	}
 });
