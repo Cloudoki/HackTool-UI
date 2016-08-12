@@ -10,6 +10,7 @@ define(
 			events: {
 				'click [data-action=edit]': 'editMode',
 				'click [data-action=delete]': 'deleteArticle',
+				'click [data-action=cancel]': 'cancelEdit',
 				'click .submit': 'submit'
 			},
 			id: 'article',
@@ -96,15 +97,22 @@ define(
 		    	this.$el.find('.article-wrapper').addClass('editing');
 		    	this.$el.find('.chosen-select').val(this.post? this.post.attributes.category: 'Hackfridays');
 		    	this.$el.find('.chosen-select').chosen({width: "100%", disable_search_threshold: 10});
-
+		    	this.$el.find('#mdeditor-wrapper').html('<textarea id="mdeditor"></textarea>');
+		    	
 		    	// Temporary hack to initialize the editor
 		    	setTimeout(function(){
+
 		    		this.mde = new SimpleMDE({element: document.getElementById("mdeditor")})
 
 		    		if (e) 
 		    			this.mde.value(this.post.attributes.content)
 
 		    	}.bind(this), 100);
+		    },
+
+		    cancelEdit: function() {
+		    	this.$el.find('#mdeditor').empty();
+		    	this.$el.find('.article-wrapper').removeClass('editing');
 		    },
 
 		    submit: function() {
