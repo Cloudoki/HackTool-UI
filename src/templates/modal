@@ -1,0 +1,18 @@
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      {{#title}}
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">{{#_i18n_}}{{title}}{{/_i18n_}}</h4>
+        </div>
+      {{/title}}
+      {{#body}}
+      <div class="modal-body">
+        {{#_i18n_}}{{body}}{{/_i18n_}}
+      </div>
+      {{/body}}
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>

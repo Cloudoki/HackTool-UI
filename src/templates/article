@@ -6,6 +6,9 @@
 			<h1 class="article-title">
 				{{post.title}}
 				{{#canEdit}}
+					<div class="article-delete" data-action="delete">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</div>
 					<div class="article-edit" data-action="edit">
 						<i class="fa fa-pencil" aria-hidden="true"></i>
 					</div>
@@ -16,7 +19,12 @@
 		{{/post}}
 
 		<div class="form-group article-new">
-			<h2>Add Article</h2>
+			{{^post}}
+				<h2>Add Article</h2>
+			{{/post}}
+			{{#post.id}}
+				<h2>Edit Article</h2>
+			{{/post.id}}
 			<br>
 			<div class="row">
 				<div class="col-sm-4">

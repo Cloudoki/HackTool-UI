@@ -5,14 +5,14 @@
 		background-color: $white;
 		min-height: 150px;
 
-		.article-edit {
+		.article-edit, .article-delete {
 			display: inline-block;
 			font-size: .5em;
 			color: $grey-color;
 			opacity: .3;
+			float: right;
 			position: relative;
 			bottom: 3px;
-			left: 30px;
 			padding: 10px;
 
 			&:hover {

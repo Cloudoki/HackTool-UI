@@ -9,6 +9,7 @@ define(
 
 			events: {
 				'click [data-action=edit]': 'editMode',
+				'click [data-action=delete]': 'deleteArticle',
 				'click .submit': 'submit'
 			},
 			id: 'article',
@@ -122,6 +123,19 @@ define(
 		    	// update article
 		    	else
 		    		hacktoolSdk.Articles.update(this.articleId, article);
+		    },
+
+		    deleteArticle: function() {
+
+		    	var modal = Application.RootView.showModal('article_delete_modal');
+
+		    	modal.on('delete:confirm', this.makeDelete.bind(this));
+		    },
+
+		    makeDelete: function() {
+
+		    	Application.RootView.hideModal();
+		    	hacktoolSdk.Articles.delete(this.articleId);
 		    }
 		});
 

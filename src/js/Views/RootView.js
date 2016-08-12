@@ -1,7 +1,7 @@
 
 define(
-	['Views/BaseView'],
-	function (BaseView)
+	['Views/BaseView', 'Views/Modals/Modal', 'Views/Modals/ArticleDeleteModal'],
+	function (BaseView, ModalView, ArticleDeleteModal)
 	{
 		var RootView = BaseView.extend({
 
@@ -32,7 +32,29 @@ define(
 				};
 
 				$('header').html(Mustache.render(Templates.topnav, params));
-			}
+			},
+
+			showModal: function(template, params) {
+				var modals = {
+					'article_delete_modal': ArticleDeleteModal
+				};
+
+				var modalView = template? modals[template]: ModalView;
+
+				var modal = new modalView({params: params, modal: template});
+
+				$('#ht-modal').remove(); // remove any existing modals
+				$('body').append(modal.render().el);
+
+				$('#ht-modal').modal({backdrop: (params? params.static || true: true)});
+
+				return modal;
+			},
+
+			hideModal: function() {
+
+				$('#ht-modal').modal('hide');
+			},
 		});
 
 		return RootView;
