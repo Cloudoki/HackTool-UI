@@ -5,11 +5,11 @@
 		<div class="article-exists">
 			<h1 class="article-title">
 				{{post.title}}
-				{{#admin}}
+				{{#canEdit}}
 					<div class="article-edit" data-action="edit">
 						<i class="fa fa-pencil" aria-hidden="true"></i>
 					</div>
-				{{/admin}}
+				{{/canEdit}}
 			</h1>
 			<div class="article-content"></div>
 		</div>

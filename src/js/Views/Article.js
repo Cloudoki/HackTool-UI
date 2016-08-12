@@ -34,7 +34,7 @@ define(
 		    {
 		    	this.$el.html(Mustache.render(Templates.article, {
 		    		post: this.post? this.post.attributes: null,
-		    		admin: Application.Session.isAdmin,
+		    		canEdit: this.canEdit(),
 		    		categories: Application.config.content.categories
 		    	}));
 
@@ -43,7 +43,7 @@ define(
 
 		    		if (!this.post.attributes.content && !refresh)
 		    			this.getFile();
-		    		console.log(this.post)
+
 		    		if (refresh)
 		    			this.$el.find('.article-content').html(markdown.toHTML(this.post.attributes.content));
 		    	}
@@ -53,6 +53,15 @@ define(
 		    		this.editMode();
 
 		        return this;
+		    },
+
+		    canEdit: function() {
+
+		    	if (!this.post)						return false;
+		    	if (Application.Session.isAdmin)	return true;
+		    	
+		    	if (this.post.attributes.created_by == Application.Session.User.get('login'))
+		    		return true;
 		    },
 
 		    // Get a file from Git

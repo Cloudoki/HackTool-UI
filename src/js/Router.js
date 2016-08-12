@@ -1,7 +1,7 @@
 
 define(
-	['Views/Dashboard', 'Views/ArticleAdd', 'Views/TeamPage', 'Views/Article'],
-	function (DashboardView, ArticleAddView, TeamPageView, ArticleView)
+	['Views/Dashboard', 'Views/TeamPage', 'Views/Article'],
+	function (DashboardView, TeamPageView, ArticleView)
 	{
 		var Router = Backbone.Router.extend({
 			
