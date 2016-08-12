@@ -71,6 +71,11 @@
         .post-title {
             color: #ef4b2a;
             font-family: $font-stack;
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
        
 	}
