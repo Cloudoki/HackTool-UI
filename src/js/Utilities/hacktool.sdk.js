@@ -314,6 +314,34 @@ var hacktoolSdk = {
 
       });
     }
+  },
+
+  Settings: {
+    edit: function(content, success, error) {
+
+      if (isAdmin(hacktoolSdk.user.login) === true) {
+
+        request({
+          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+          method: 'GET'
+        }).done(function(settingsData) {
+          request({
+            url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+            method: 'PUT',
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+              message: "updating settings",
+              content: btoa(JSON.stringify(content)),
+              sha: settingsData.sha
+            })
+          }).done(function(response) {
+            console.log(response);
+          }).error(error);
+
+        }).error(error);
+      }
+    }
   }
 
 }
