@@ -9,8 +9,7 @@ define(
 
 				'logout': 'logout',
 		        'home': 'home',
-		        'article/:id': 'article',
-		        'newarticle': 'articleAdd',
+		        'article(/:id)': 'article',
 		        'team': 'team',
 		        '*path': 'home'
 		    },
@@ -22,11 +21,6 @@ define(
 
 		    article: function(id){
 		    	var view = new ArticleView({articleId: id});
-		    	Application.RootView.setView(view);
-		    },
-
-		    articleAdd: function(){
-		    	var view = new ArticleAddView();
 		    	Application.RootView.setView(view);
 		    },
 

@@ -1,4 +1,42 @@
 <div class="content-wrapper">
-	<h1>{{post.title}}</h1>
-	<div class="article-content"></div>
+	<div class="article-wrapper {{^post.id}}editing{{/post.id}}">
+
+		{{#post}}
+		<div class="article-exists">
+			<h1 class="article-title">
+				{{post.title}}
+				{{#admin}}
+					<div class="article-edit" data-action="edit">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+					</div>
+				{{/admin}}
+			</h1>
+			<div class="article-content"></div>
+		</div>
+		{{/post}}
+
+		<div class="form-group article-new">
+			<h2>Add Article</h2>
+			<br>
+			<div class="row">
+				<div class="col-sm-4">
+					<label>Name</label>
+					<input id="title" type="text" class="form-control" value="{{post.title}}"/>
+				</div>
+				<div class="col-sm-3">
+					<label>Category</label>
+					<select class="chosen-select category">
+						<option value="Hackfridays">Hackfridays</option>
+						{{#categories}}
+							<option value="{{name}}">{{name}}</option>
+						{{/categories}}
+					</select>
+				</div>
+			</div>
+			<br>
+			<textarea id="mdeditor"></textarea>
+
+			<button class="submit">Submit</button>
+		</div>
+	</div>
 </div>
