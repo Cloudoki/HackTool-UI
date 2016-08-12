@@ -94,7 +94,7 @@ define(
 		    	this.mde = null;
 
 		    	this.$el.find('.article-wrapper').addClass('editing');
-		    	this.$el.find('.chosen-select').val(this.post? this.post.attributes.category: null);
+		    	this.$el.find('.chosen-select').val(this.post? this.post.attributes.category: 'Hackfridays');
 		    	this.$el.find('.chosen-select').chosen({width: "100%", disable_search_threshold: 10});
 
 		    	// Temporary hack to initialize the editor
@@ -122,7 +122,7 @@ define(
 		    	
 		    	// update article
 		    	else
-		    		hacktoolSdk.Articles.update(this.articleId, article);
+		    		hacktoolSdk.Articles.edit(this.articleId, article);
 		    },
 
 		    deleteArticle: function() {

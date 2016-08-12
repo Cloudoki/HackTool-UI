@@ -8,7 +8,7 @@
 		<a class="tabbed-widget-title"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 	</div>
 	<div class="tabbed-tab edit-inline-only" data-action="done">
-		<a class="tool_title">DONE</a>
+		<a class="tabbed-widget-title">DONE</a>
 	</div>
 	{{/admin}}
 	<div class="tabbed-widget-container">
