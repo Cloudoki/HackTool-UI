@@ -6,6 +6,7 @@ define(
 		var Session = {
 			
 			version : 1,
+			isAdmin: false,
 
 			loadEssentialData : function (callback)
 			{	
@@ -13,6 +14,9 @@ define(
 				this.Posts = new Posts();
 
 				this.User.once("activated", function () {	
+
+					isAdmin = this.User.admin;
+
 					callback();
 				}.bind(this));
 				
