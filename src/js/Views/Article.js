@@ -116,7 +116,12 @@ define(
 		    	};
 
 		    	// add article
-		    	hacktoolSdk.Articles.add(article);
+		    	if (!this.post)
+		    		hacktoolSdk.Articles.add(article);
+		    	
+		    	// update article
+		    	else
+		    		hacktoolSdk.Articles.update(this.articleId, article);
 		    }
 		});
 
