@@ -3,12 +3,14 @@
 	<div class="tabbed-tab active" href="">
 		<a class="tabbed-widget-title">REPOS</a>
 	</div>
+	{{#admin}}
 	<div class="tabbed-tab view-only" data-action="edit">
 		<a class="tabbed-widget-title"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 	</div>
 	<div class="tabbed-tab edit-inline-only" data-action="done">
 		<a class="tool_title">DONE</a>
 	</div>
+	{{/admin}}
 	<div class="tabbed-widget-container">
 		<div class="edit-only form-group repo-add">
 			<label>Add repo</label>

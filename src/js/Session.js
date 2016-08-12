@@ -15,7 +15,7 @@ define(
 
 				this.User.once("activated", function () {	
 
-					isAdmin = this.User.admin;
+					this.isAdmin = this.User.admin;
 
 					callback();
 				}.bind(this));
