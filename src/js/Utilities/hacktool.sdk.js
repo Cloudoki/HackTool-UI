@@ -95,9 +95,10 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/components/'+component+'.json',
           method: 'GET'
       }).done(function(data) {
-        hacktoolSdk.readJSON(data.download_url, function(result){
+       /* hacktoolSdk.readJSON(data.download_url, function(result){
           success(result, data.sha)
-        })
+        })*/
+        success(JSON.parse(atob(data.content)), data.sha);
       }).error(error);
     },
 
@@ -126,7 +127,6 @@ var hacktoolSdk = {
         // hacktoolSdk.readJSON(data.download_url, function(metadata){
         //   success(metadata, data.sha)
         // })
-        // console.log(JSON.parse(atob(data.content)))
         success(JSON.parse(atob(data.content)), data.sha);
       }).error(error);
     },
@@ -209,8 +209,7 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+name,
           method: 'GET'
       }).done(function(data) {
-        hacktoolSdk.readJSON(data.download_url, success)
-        //we need to extract the content of the data and then decode it
+        success(JSON.parse(atob(data.content)));
       }).error(error);
     },
 
