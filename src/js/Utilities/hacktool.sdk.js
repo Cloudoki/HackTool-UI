@@ -21,15 +21,15 @@ function filterRepos(repos) {
   return hacktoolRepos;
 }
 
-function getFilename(id, metadata) {
-  for (m in metadata.articles) {
+function isAdmin(user) {
 
-    if (metadata.articles[m].id === id) {
-      fileInfo.push(metadata.articles[m]);
+  for (admin in hacktoolSdk.admins) {
+    if(hacktoolSdk.admins[admin].username == user) {
+      return true;
     }
-
-    console.log(fileInfo);
   }
+
+  return false;
 }
 
 var hacktoolSdk = {
@@ -230,7 +230,7 @@ var hacktoolSdk = {
       });
     },
 
-    delete: function (id, success, error) {
+    delete: function (id, article, success, error) {
 
       // Get the metadata first so we know on what ID we should add the new article
       hacktoolSdk.Articles.getMetadata(function(metadata, sha){
@@ -243,45 +243,104 @@ var hacktoolSdk = {
             break;
           }
         }
-        request({
-          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+file.filename,
-          method: 'DELETE',
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify({
-            message: "delete an article",
-            sha: file.sha
-          })
-        }).done(function(data) {
-          for (var n in metadata.articles) {
-            if (metadata.articles[n].id == id) {
-              metadata.articles.splice(n, 1);
-              break;
+
+        //check if the user has enough permissions to deleted the article
+        if (hacktoolSdk.user.login == file.created_by || isAdmin(hacktoolSdk.user.login) === true) {
+          request({
+            url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+file.filename,
+            method: 'DELETE',
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+              message: "delete an article",
+              sha: file.sha
+            })
+          }).done(function(data) {
+            for (var n in metadata.articles) {
+              if (metadata.articles[n].id == id) {
+                metadata.articles.splice(n, 1);
+                break;
+              }
             }
+            metadata.total = metadata.articles.length;
+            hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error)
+          }).error(error);
+        }
+      });
+    },
+
+    edit: function (id, article, success, error) {
+      // Get the metadata first so we know on what ID we should add the new article
+      hacktoolSdk.Articles.getMetadata(function(metadata, sha){
+
+        var file = null;
+
+        for (var n in metadata.articles) {
+          if (metadata.articles[n].id == id) {
+            file = metadata.articles[n];
+            break;
           }
-          metadata.total = metadata.articles.length;
-          hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error)
-        }).error(error);
+        }
+
+        if (hacktoolSdk.user.login == file.created_by || isAdmin(hacktoolSdk.user.login) === true) {
+
+          request({
+            url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+file.filename,
+            method: 'PUT',
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+              message: "edit the article",
+              content: btoa(JSON.stringify(article)),
+              sha: file.sha
+            })
+          }).done(function(data) {
+
+            for (var n in metadata.articles) {
+              if (metadata.articles[n].id == id) {
+                metadata.articles[n].title = article.title;
+                metadata.articles[n].intro = article.content.substring(0,100);
+                metadata.articles[n].content = article.content;
+                metadata.articles[n].category = article.category;
+                metadata.articles[n].sha = data.content.sha;
+                break;
+              }
+            }
+
+            hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error)
+          }).error(error);
+
+        }
 
       });
+    }
+  },
 
+  Settings: {
+    edit: function(content, success, error) {
 
+      if (isAdmin(hacktoolSdk.user.login) === true) {
 
-     /* request({
-        url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+name+'json',
-        method: 'DELETE',
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify({
-          message: "delete an article",
-          sha: sha
-        })
-      }).done(function(data) {
+        request({
+          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+          method: 'GET'
+        }).done(function(settingsData) {
+          request({
+            url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+            method: 'PUT',
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+              message: "updating settings",
+              content: btoa(JSON.stringify(content)),
+              sha: settingsData.sha
+            })
+          }).done(function(response) {
+            console.log(response);
+          }).error(error);
 
-        console.log(data);
-        //hacktoolSdk.readJSON(data.download_url, success)
-      }).error(error);*/
-
+        }).error(error);
+      }
     }
   }
 

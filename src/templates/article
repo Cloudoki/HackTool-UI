@@ -1,4 +1,56 @@
 <div class="content-wrapper">
-	<h1>{{post.title}}</h1>
-	<div class="article-content"></div>
+	<div class="article-wrapper {{^post.id}}editing{{/post.id}}">
+
+		{{#post}}
+		<div class="article-exists">
+			<h1 class="article-title">
+				{{post.title}}
+				{{#canEdit}}
+					<div class="article-delete" data-action="delete">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</div>
+					<div class="article-edit" data-action="edit">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+					</div>
+				{{/canEdit}}
+			</h1>
+			<div class="article-content"></div>
+		</div>
+		{{/post}}
+
+		<div class="form-group article-new">
+			{{^post}}
+				<h2>Add Article</h2>
+			{{/post}}
+			{{#post.id}}
+				<h2>Edit Article</h2>
+			{{/post.id}}
+			<br>
+			<div class="row">
+				<div class="col-sm-4">
+					<label>Name</label>
+					<input id="title" type="text" class="form-control" value="{{post.title}}"/>
+				</div>
+				<div class="col-sm-3">
+					<label>Category</label>
+					<select class="chosen-select category">
+						<option value="Hackfridays">Hackfridays</option>
+						{{#categories}}
+							<option value="{{name}}">{{name}}</option>
+						{{/categories}}
+					</select>
+				</div>
+			</div>
+			<br>
+			<div id="mdeditor-wrapper"></div>
+
+			{{#post.id}}
+				<button class="btn btn-default" data-action="cancel">Cancel</button>
+				<button class="btn btn-primary submit">Save</button>
+			{{/post.id}}
+			{{^post.id}}
+				<button class="btn btn-primary submit">Create</button>
+			{{/post.id}}
+		</div>
+	</div>
 </div>

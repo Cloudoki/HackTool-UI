@@ -1,7 +1,7 @@
 
 define(
-	['Views/Dashboard', 'Views/ArticleAdd', 'Views/TeamPage', 'Views/Article'],
-	function (DashboardView, ArticleAddView, TeamPageView, ArticleView)
+	['Views/Dashboard', 'Views/TeamPage', 'Views/Article'],
+	function (DashboardView, TeamPageView, ArticleView)
 	{
 		var Router = Backbone.Router.extend({
 			
@@ -9,8 +9,7 @@ define(
 
 				'logout': 'logout',
 		        'home': 'home',
-		        'article/:id': 'article',
-		        'newarticle': 'articleAdd',
+		        'article(/:id)': 'article',
 		        'team': 'team',
 		        '*path': 'home'
 		    },
@@ -22,11 +21,6 @@ define(
 
 		    article: function(id){
 		    	var view = new ArticleView({articleId: id});
-		    	Application.RootView.setView(view);
-		    },
-
-		    articleAdd: function(){
-		    	var view = new ArticleAddView();
 		    	Application.RootView.setView(view);
 		    },
 

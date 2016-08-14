@@ -21,7 +21,7 @@ define(
 
 		    render: function(refresh, edit)
 		    {
-		    	this.$el.html(Mustache.render(Templates.tool_belt, {items: this.toolBelt, edit: edit}));
+		    	this.$el.html(Mustache.render(Templates.tool_belt, {items: this.toolBelt, edit: edit, admin: Application.Session.isAdmin}));
 
 		    	if (!refresh)
 		    		this.getData();

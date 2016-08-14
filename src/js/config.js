@@ -4,11 +4,11 @@ define({
 		organization: "Cloudoki",
 		team: "2052463",
 		repo: "_hacktool",
-		admins: {
+		admins: [{
 			name: "Rui Molefas", 
 			email: "molefas@gmail.com", 
 			username: "Muffles"
-		}
+		}]
 	},
 	social: {
 		twitter_handle: "TUIHackfridays"
