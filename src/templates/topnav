@@ -1,4 +1,21 @@
-<nav class="navbar navbar-default">
+
+ <section id="hidden-menu">
+    
+        <div class="center">
+           <div class="circle">
+            <div class="user_image">
+                <img src="{{user.avatar_url}}">
+            </div>
+            </div>
+            <ul>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#toolbelt">Tool Belt</a></li>
+            </ul>
+        </div>
+    
+</section>
+
+ <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,7 +25,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"></a>
+      <a class="navbar-brand" href="#" id="call-menu"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,3 +49,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div class="center">
+    <h1>#PROJECTNAME</h1>
+    <p class="sub_title"> Dive into new languages, frameworks and hardware!</p>
+</div>
