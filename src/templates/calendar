@@ -1,8 +1,8 @@
-<div class="tool-content">
-	<div class="tool_tab" href="">
-		<a class="tool_title">CALENDAR</a>
+<div class="tabbed-widget">
+	<div class="tabbed-tab active" href="">
+		<a class="tabbed-widget-title">CALENDAR</a>
 	</div>
-	<div class="toolbelt_container">
+	<div class="tabbed-widget-container" id="calendar-holder">
 		 
 	</div>
 </div>

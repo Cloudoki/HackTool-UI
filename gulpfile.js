@@ -54,6 +54,11 @@ gulp.task('copy:scripts', function() {
             dirs.source+'/vendor/backbone/backbone-min.js',
             dirs.source+'/vendor/bootstrap/dist/css/bootstrap.min.css',
             dirs.source+'/vendor/bootstrap/dist/js/bootstrap.min.js',
+            dirs.source+'/vendor/fullcalendar/dist/fullcalendar.min.css',
+            dirs.source+'/vendor/fullcalendar/dist/fullcalendar.min.js',
+        
+            dirs.source+'/vendor/moment/min/moment.min.js',
+        
             dirs.source+'/vendor/underscore/underscore-min.js',
             dirs.source+'/vendor/requirejs/require.js',
             dirs.source+'/vendor/mustache.js/mustache.js',

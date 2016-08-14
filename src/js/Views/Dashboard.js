@@ -64,14 +64,38 @@ define(
             renderCalendar: function () {
 
                 var componentName = "calendar";
+				var events = '';
 
                 hacktoolSdk.Components.get(componentName, function (data) {
                     // Render data here
-                    console.log(data[componentName]);
+                    events = data[componentName];
                 }, this.error);
 
                 var calendar = new Calendar();
                 this.$el.find('section.calendar').html(calendar.render().el);
+				
+               var that = this;
+               setTimeout(function(){
+				   
+				   console.log(events)
+				   
+                    that.$el.find('#calendar-holder').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: '',
+                        right: 'title'
+                    },
+                    defaultView: 'month',
+                    defaultDate: new Date(),
+                    editable: true,
+                    
+						
+                    // RENDER EVENTS FROM THE SDK AS ARRAY OF OBJ
+					events: events
+                    
+                });
+               },500)
+            
             },
 
             // Render github organization stats
