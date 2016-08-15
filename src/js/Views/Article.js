@@ -141,9 +141,8 @@ define(
 		    },
 
 		    makeDelete: function() {
-
 		    	Application.RootView.hideModal();
-		    	hacktoolSdk.Articles.delete(this.articleId);
+		    	hacktoolSdk.Articles.delete(this.articleId, this.articleDeleted.bind(this));
 		    },
 
 		    articleAdded: function(data, articleId) {
@@ -152,6 +151,11 @@ define(
 
 		    articleSaved: function() {
 		    	this.renderAlert('.alerts', 'success', "Article has been saved!");
+		    },
+
+		    articleDeleted: function() {
+		    	this.$el.find('.article-exists').empty();
+		    	this.renderAlert('.delete-alerts', 'success', "Article has been deleted.");
 		    }
 		});
 

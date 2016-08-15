@@ -2,6 +2,7 @@
 	<div class="article-wrapper {{^post.id}}editing{{/post.id}}">
 
 		{{#post}}
+		<div class="delete-alerts"></div>
 		<div class="article-exists">
 			<h1 class="article-title">
 				{{post.title}}

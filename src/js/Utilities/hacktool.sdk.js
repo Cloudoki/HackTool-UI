@@ -230,7 +230,7 @@ var hacktoolSdk = {
       });
     },
 
-    delete: function (id, article, success, error) {
+    delete: function (id, success, error) {
 
       // Get the metadata first so we know on what ID we should add the new article
       hacktoolSdk.Articles.getMetadata(function(metadata, sha){
