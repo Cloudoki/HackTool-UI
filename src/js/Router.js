@@ -1,7 +1,7 @@
 
 define(
-	['Views/Dashboard', 'Views/TeamPage', 'Views/Article', 'Views/Settings'],
-	function (DashboardView, TeamPageView, ArticleView, SettingsPageView)
+	['Views/Dashboard', 'Views/TeamPage', 'Views/Article', 'Views/Settings', 'Views/ToolBelt'],
+	function (DashboardView, TeamPageView, ArticleView, SettingsPageView, ToolBeltView)
 	{
 		var Router = Backbone.Router.extend({
 			
@@ -12,6 +12,7 @@ define(
 		        'article(/:id)': 'article',
 		        'team': 'team',
 		        'settings': 'settings',
+		        'toolbelt': 'toolbelt',
 		        '*path': 'home'
 		    },
 
@@ -27,6 +28,11 @@ define(
 
 		    team: function(){
 		    	var view = new TeamPageView();
+		    	Application.RootView.setView(view);
+		    },
+
+		    toolbelt: function(){
+		    	var view = new ToolBeltView();
 		    	Application.RootView.setView(view);
 		    },
 

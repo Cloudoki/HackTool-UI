@@ -106,7 +106,7 @@ var hacktoolSdk = {
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify({
-          message: "updating toolbelt repos",
+          message: "updating "+component+" repos",
           content: btoa(JSON.stringify(content.content)),
           sha: content.sha
         })
