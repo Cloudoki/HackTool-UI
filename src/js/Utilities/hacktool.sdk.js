@@ -131,7 +131,7 @@ var hacktoolSdk = {
       }).error(error);
     },
 
-    updateMetadata: function(metadata, sha, success, error) {
+    updateMetadata: function(metadata, sha, id, success, error) {
       request({
         url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/metadata.json',
         method: 'PUT',
@@ -142,8 +142,8 @@ var hacktoolSdk = {
           content: btoa(JSON.stringify(metadata)),
           sha: sha
         })
-      }).done(function(data) {
-        hacktoolSdk.readJSON(data.download_url, success)
+      }).done(function(data){
+        success(data, id);
       }).error(error);
     },
 
@@ -187,7 +187,7 @@ var hacktoolSdk = {
                 message: "publishing new article",
                 content: btoa(JSON.stringify(article))
             })
-        }).done(function(data) { console.log(data)
+        }).done(function(data) {
           metadata.articles.push({
             id: lastId+1,
             title: article.title,
@@ -199,7 +199,7 @@ var hacktoolSdk = {
             sha: data.content.sha
           });
           metadata.total = metadata.articles.length;
-          hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error);
+          hacktoolSdk.Articles.updateMetadata(metadata, sha, lastId+1, success, error);
         }).error(error);
       });
     },
@@ -263,7 +263,7 @@ var hacktoolSdk = {
               }
             }
             metadata.total = metadata.articles.length;
-            hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error)
+            hacktoolSdk.Articles.updateMetadata(metadata, sha, null, success, error)
           }).error(error);
         }
       });
@@ -307,7 +307,7 @@ var hacktoolSdk = {
               }
             }
 
-            hacktoolSdk.Articles.updateMetadata(metadata, sha, success, error)
+            hacktoolSdk.Articles.updateMetadata(metadata, sha, id, success, error)
           }).error(error);
 
         }
