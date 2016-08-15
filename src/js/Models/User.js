@@ -14,10 +14,8 @@ define(
 
 				hacktoolSdk.Users.me(function(user){
 					$.extend(this.attributes, user);
-
-					this.isAdmin();
-
 					this.activate();
+					
 				}.bind(this))
 			},
 
@@ -32,7 +30,7 @@ define(
 
 			isAdmin: function() {
 
-				var admins = Application.config.git.admins;
+				var admins = Application.config.settings.admins;
 
 				this.admin = _.find(admins, function(user) {
 					return user.email == this.get('email')

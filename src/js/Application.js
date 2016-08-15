@@ -12,7 +12,6 @@ define(
 			{
 				// Load configs
 				Application.config = config;
-				Application.Api = config.apiurl;
 				Application.Session = Session;
 
 				hacktoolSdk.init(config.git);
@@ -47,7 +46,7 @@ define(
 			loadUserData: function() {
 
 				this.Session.loadEssentialData (function ()	{
-
+					hacktoolSdk.init(config.settings);
 					this.begin();
 				}.bind(this));
 			},

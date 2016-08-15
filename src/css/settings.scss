@@ -1,0 +1,23 @@
+.admin-add {
+	border-bottom: 1px solid #eee;
+
+	input {
+		margin-bottom: 10px;
+	}
+}
+
+.admin-list {
+	padding: 15px 0;
+	position: relative;
+
+	i { margin-right: 15px; }
+
+	.admin-remove {
+		position: absolute;
+		right: 0;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

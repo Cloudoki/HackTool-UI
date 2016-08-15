@@ -28,7 +28,8 @@ define(
 
 				var params = {
 					user: Application.Session.User.attributes,
-					organization: Application.Organization
+					organization: Application.Organization,
+					isAdmin: Application.Session.isAdmin
 				};
 
 				$('header').html(Mustache.render(Templates.topnav, params));

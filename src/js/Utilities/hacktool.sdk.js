@@ -95,9 +95,6 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/components/'+component+'.json',
           method: 'GET'
       }).done(function(data) {
-       /* hacktoolSdk.readJSON(data.download_url, function(result){
-          success(result, data.sha)
-        })*/
         success(JSON.parse(atob(data.content)), data.sha);
       }).error(error);
     },
@@ -317,6 +314,60 @@ var hacktoolSdk = {
   },
 
   Settings: {
+    get: function(success, error) {
+      request({
+          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+          method: 'GET'
+      }).done(function(data) {
+        success(JSON.parse(atob(data.content)), data.sha);
+      }).error(error);
+    },
+
+    addAdmin: function(email, success, error) {
+      request({
+          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+          method: 'GET'
+        }).done(function(settingsData) {
+
+          var content = JSON.parse(atob(settingsData.content));
+          var admins = content.settings.admins;
+
+          if (!_.find(admins, function(admin) { return admin.email == email})) {
+            admins.push({email: email});
+            hacktoolSdk.Settings.edit(content, success, error);
+          }
+
+          else
+            error("Admin already exists");
+
+        }).error(error);
+    },
+
+    removeAdmin: function(email, success, error) {
+
+      request({
+          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+          method: 'GET'
+        }).done(function(settingsData) {
+
+          var content = JSON.parse(atob(settingsData.content));
+          var admins = content.settings.admins;
+          var found = false;
+
+          for (var n in admins) {
+            if (admins[n].email == email) {
+              admins.splice(n, 1);
+              found = true;
+              break;
+            }
+          }
+
+          if (found)  hacktoolSdk.Settings.edit(content, success, error);
+          else        error("Admin doesn't exist");
+
+        }).error(error);
+    }, 
+
     edit: function(content, success, error) {
 
       if (isAdmin(hacktoolSdk.user.login) === true) {
@@ -336,7 +387,7 @@ var hacktoolSdk = {
               sha: settingsData.sha
             })
           }).done(function(response) {
-            console.log(response);
+            success()
           }).error(error);
 
         }).error(error);
