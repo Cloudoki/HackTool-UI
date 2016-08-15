@@ -32,6 +32,12 @@
 							</div>
 						</div>
 					</div>
+					<br>
+					<div class="settings-alerts"></div>
+					<br>
+					<div class="text-right">
+						<button class="btn btn-primary submit" data-action="save">Save</button>
+					</div>
 				</div>
 			</div>
 		</div>

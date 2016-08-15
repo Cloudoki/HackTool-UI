@@ -10,7 +10,8 @@ define(
 			events: {
 				'click [data-action=remove]': 'removeAdmin',
 				'focus .admin-add input': 'enableSubmit',
-				'blur .admin-add input': 'disableSubmit'
+				'blur .admin-add input': 'disableSubmit',
+				'click [data-action=save]': 'saveSettings'
 			},
 
 		    render: function()
@@ -51,6 +52,24 @@ define(
 		    	hacktoolSdk.Settings.removeAdmin(email, this.adminUpdated.bind(this, true, email), this.adminError.bind(this));
 		    },
 
+		    saveSettings: function() {
+
+		    	var settings = {
+		    		"name": this.$el.find('[data-attr=hacktool-name]').val(),
+					"description": this.$el.find('[data-attr=hacktool-description]').val(),
+					"time": {
+						"date": "20 September 2016",
+						"time": "09:00 (UTC+1)"
+					},
+					"location": {
+						"street": this.$el.find('[data-attr=hacktool-street]').val(),
+						"place": this.$el.find('[data-attr=hacktool-place]').val()
+					}
+		    	}
+		    	
+		    	hacktoolSdk.Settings.editSettings(settings, this.settingsUpdated.bind(this), this.settingsError.bind(this));
+		    },
+
 		    adminUpdated: function(remove, email) {
 		    	
 		    	if (!remove)
@@ -63,6 +82,14 @@ define(
 
 		    adminError: function(error) {
 		    	this.renderAlert('.admin-alerts', 'danger', error);
+		    },
+
+		    settingsUpdated: function() {
+		    	this.renderAlert('.settings-alerts', 'success', "Settings updated!");
+		    },
+
+		    settingsError: function() {
+		    	this.renderAlert('.settings-alerts', 'danger', error);
 		    }
 		});
 

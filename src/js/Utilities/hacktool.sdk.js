@@ -368,6 +368,20 @@ var hacktoolSdk = {
         }).error(error);
     }, 
 
+    editSettings: function(settings, success, error) {
+      request({
+          url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/settings.json',
+          method: 'GET'
+        }).done(function(settingsData) {
+
+          var content = JSON.parse(atob(settingsData.content));
+          content.project = settings;
+
+          hacktoolSdk.Settings.edit(content, success, error);
+
+        }).error(error);
+    },
+
     edit: function(content, success, error) {
 
       if (isAdmin(hacktoolSdk.user.login) === true) {
