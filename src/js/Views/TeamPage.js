@@ -11,6 +11,9 @@ define(
 			teamMembers: [],
 
 			initialize: function(options) {
+				
+				$('body').addClass('small_header');
+				$('body').find('.sub_title').html('Buccaneers these proud women and men are. <em>Salute</em>!');
 
 			},
 

@@ -16,7 +16,7 @@ define(
 			},
 
 			initialize: function(options) {
-
+				
 			},
 
 		    render: function(refresh, edit)
