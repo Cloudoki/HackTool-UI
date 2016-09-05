@@ -1,6 +1,6 @@
 define(
-    ['Views/BaseView', 'Views/ToolBelt', 'Views/landingScreen', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts', 'Views/SocialFeed'],
-    function (BaseView, ToolBelt, LandingScreen, DashboardSubNav, Calendar, DasboardPosts, SocialFeed) {
+    ['Views/BaseView', 'Views/RepoList', 'Views/landingScreen', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts', 'Views/SocialFeed'],
+    function (BaseView, RepoList, LandingScreen, DashboardSubNav, Calendar, DasboardPosts, SocialFeed) {
         var Dashboard = BaseView.extend({
 
             error: function (err) {
@@ -23,7 +23,7 @@ define(
                 this.renderSocialFeed();
                 this.renderCalendar();
                 this.renderStats();
-                this.renderToolBelt();
+                this.renderRepoList();
                 this.renderPosts();
 
                 $('#call-menu').click(function(e){
@@ -102,10 +102,10 @@ define(
             renderStats: function () {},
 
             // Render ToolBelt from toolbelt.json
-            renderToolBelt: function () {
+            renderRepoList: function () {
 
-                var toolbelt = new ToolBelt();
-                this.$el.find('section.toolbelt').html(toolbelt.render().el);
+                var repolist = new RepoList();
+                this.$el.find('section.toolbelt').html(repolist.render().el);
             }
         });
 

@@ -15,9 +15,8 @@ define(
 
 				this.User.once("activated", function () {	
 
-					this.isAdmin = this.User.admin;
+					this.getSettings(callback);
 
-					callback();
 				}.bind(this));
 				
 				this.User.Fetch({error: this.authError.bind(this)});
@@ -25,7 +24,21 @@ define(
 
 			// Error on API, for example
 			authError: function() {
-				// this.logout();
+				this.logout();
+			},
+
+			getSettings: function(callback) {
+
+				hacktoolSdk.Settings.get(function(settings){
+
+					$.extend(Application.config, settings);
+					
+					this.User.isAdmin();
+					this.isAdmin = this.User.admin;
+
+					callback();
+					
+				}.bind(this))
 			},
 
 			logout: function() {

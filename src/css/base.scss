@@ -14,7 +14,7 @@ img {
 
 .content-wrapper {
 	max-width: 1000px;
-	margin: 0 auto;
+	margin: 30px auto;
 }
 
 .tabbed-widget {
@@ -25,6 +25,7 @@ img {
 		background-color: #ffffff;  
     	border-top: 1px solid #dddddd;
     	margin-top: -1px;
+    	padding: 30px;
 	}
 
 	.tabbed-widget-title {
@@ -48,6 +49,11 @@ img {
             border-top: 4px solid #ef4b2a;
         }
 	}
+}
+
+.panel {
+	border-radius: 0;
+	padding: 25px;
 }
 
 .edit-only, .edit-inline-only {

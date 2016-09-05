@@ -126,11 +126,11 @@ define(
 
 		    	// add article
 		    	if (!this.post)
-		    		hacktoolSdk.Articles.add(article);
+		    		hacktoolSdk.Articles.add(article, this.articleAdded.bind(this));
 		    	
 		    	// update article
 		    	else
-		    		hacktoolSdk.Articles.edit(this.articleId, article);
+		    		hacktoolSdk.Articles.edit(this.articleId, article, this.articleSaved.bind(this));
 		    },
 
 		    deleteArticle: function() {
@@ -141,9 +141,21 @@ define(
 		    },
 
 		    makeDelete: function() {
-
 		    	Application.RootView.hideModal();
-		    	hacktoolSdk.Articles.delete(this.articleId);
+		    	hacktoolSdk.Articles.delete(this.articleId, this.articleDeleted.bind(this));
+		    },
+
+		    articleAdded: function(data, articleId) {
+		    	Application.Router.navigate('#article/'+articleId, true);
+		    },
+
+		    articleSaved: function() {
+		    	this.renderAlert('.alerts', 'success', "Article has been saved!");
+		    },
+
+		    articleDeleted: function() {
+		    	this.$el.find('.article-exists').empty();
+		    	this.renderAlert('.delete-alerts', 'success', "Article has been deleted.");
 		    }
 		});
 

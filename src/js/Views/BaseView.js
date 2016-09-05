@@ -11,9 +11,7 @@ define (
 
 		var BaseView = Backbone.View.extend ({
             
-            
-            
-            windowScrollHandle : function(){
+            windowScrollHandle: function(){
                 
                var scrollValue = window.pageYOffset;
                
@@ -22,7 +20,12 @@ define (
                    'width' : '70px'
                })
                
-            }
+            },
+
+            renderAlert: function(target, type, content, params) {
+
+				this.$el.find(target).html(Mustache.render(Templates.alert, {type: type, content: content, params: params}));
+			},
 
 		});
 

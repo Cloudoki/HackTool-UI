@@ -2,6 +2,7 @@
 	<div class="article-wrapper {{^post.id}}editing{{/post.id}}">
 
 		{{#post}}
+		<div class="delete-alerts"></div>
 		<div class="article-exists">
 			<h1 class="article-title">
 				{{post.title}}
@@ -43,14 +44,16 @@
 			</div>
 			<br>
 			<div id="mdeditor-wrapper"></div>
-
-			{{#post.id}}
-				<button class="btn btn-default" data-action="cancel">Cancel</button>
-				<button class="btn btn-primary submit">Save</button>
-			{{/post.id}}
-			{{^post.id}}
-				<button class="btn btn-primary submit">Create</button>
-			{{/post.id}}
+			<div class="alerts"></div>
+			<div class="text-right">
+				{{#post.id}}
+					<button class="btn btn-default" data-action="cancel">Cancel</button>
+					<button class="btn btn-primary submit" data-action="save">Save</button>
+				{{/post.id}}
+				{{^post.id}}
+					<button class="btn btn-primary submit" data-action="create">Create</button>
+				{{/post.id}}
+			</div>
 		</div>
 	</div>
 </div>
