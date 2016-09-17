@@ -10,7 +10,7 @@ define(
             initialize: function (options) {
                 
                 
-                window.addEventListener('scroll', this.windowScrollHandle, false)
+                //window.addEventListener('scroll', this.windowScrollHandle, false)
                 
 
             },
@@ -26,10 +26,10 @@ define(
                 this.renderRepoList();
                 this.renderPosts();
 
-                $('#call-menu').click(function(e){
-                    e.preventDefault();
-                   $('#hidden-menu').toggleClass('active'); 
-                });
+//                $('#call-menu').click(function(e){
+//                    e.preventDefault();
+//                   $('#hidden-menu').toggleClass('active'); 
+//                });
                 
                 return this;
             },

@@ -10,10 +10,17 @@ define(
 
 			initialize: function(options) {
 				
+				$('body').addClass('small_header');
+				$('body').find('.sub_title').html('Dive into new languages, frameworks and hardware!');
+				
 			},
 
 		    render: function(refresh)
 		    {	
+				
+				if(window.pageYOffset === 0)
+					//$('.navbar-brand').removeAttr('style');
+				
 		    	this.$el.html(Mustache.render(Templates.tool_belt, {posts: this.posts}));
 
 		    	if (!refresh)

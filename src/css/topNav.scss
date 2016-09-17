@@ -20,7 +20,7 @@ header {
         background-size: cover; 
         margin: 15px!important; 
         padding: 26px 15px;
-        position: fixed;
+        //position: fixed;
         z-index: 100;
     }
 
@@ -134,12 +134,12 @@ header {
         width: 30%;
         height: 100%;
         z-index: 100;
-        margin-top: -100%;
-        background-color: rgba(235,82,7,.8);
+        margin-left: -1000px;
+        background-color: rgba(235,82,7,100);
         transition: .5s all;
         
         &.active {
-            margin-top: 0;
+            margin-left: 0;
         }
         
         .circle {

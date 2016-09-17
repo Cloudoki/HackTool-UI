@@ -13,9 +13,20 @@ define(
 				'blur .admin-add input': 'disableSubmit',
 				'click [data-action=save]': 'saveSettings'
 			},
+			
+			initialize: function(options) {
+				
+				$('body').addClass('small_header');
+				$('body').find('.sub_title').html('Manage your settings here');
+
+			},
 
 		    render: function()
 		    {
+				if(window.pageYOffset === 0)
+					$('.navbar-brand').removeAttr('style');
+				
+				
 		    	this.$el.html(Mustache.render(Templates.settings, {settings: Application.config}));
 
 		        return this;
