@@ -32,7 +32,8 @@ define(
 
 		    		Application.Session.Posts.set(data.articles);
 
-		    		this.posts = Application.Session.Posts.models;
+		    		this.posts = Application.Session.Posts.models.reverse();
+
 		    		this.render(true);
 
 		    	}.bind(this));
