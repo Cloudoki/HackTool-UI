@@ -21,11 +21,11 @@
 			{{#items}}
 			<div class="display" data-uri="{{url}}">
 				<img src="/images/gitlogo-n.png" alt="Git logo" class="git-logo">
-				<a href="{{url}}" target="_blank">{{name}}</a>
+				<a href="{{clone_url}}" target="_blank">{{name}}</a>
 				<a class="repo-remove edit-only" data-action="remove">
 					<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
-			</div>	
+			</div>
 			{{/items}}
 		</ul>
 	</div>
