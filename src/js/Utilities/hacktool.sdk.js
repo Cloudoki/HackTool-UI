@@ -69,7 +69,9 @@ var hacktoolSdk = {
             url: 'https://api.github.com/orgs/'+hacktoolSdk.organization+'/repos?type=public',
             method: 'GET'
         }).done(function(data) {
-          success(filterRepos(data))
+            
+            // I removed the filterRepos but this make all the sense. We need to made this configurable.
+            return success(data);
         }).error(error);
       }
     }
@@ -366,7 +368,7 @@ var hacktoolSdk = {
           else        error("Admin doesn't exist");
 
         }).error(error);
-    }, 
+    },
 
     editSettings: function(settings, success, error) {
       request({

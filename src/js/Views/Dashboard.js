@@ -28,20 +28,16 @@ define(
             },
 
             renderPosts: function () {
-                console.log("> renderPosts");
                 var posts = new DasboardPosts();
                 this.$el.find('section.dashboard_posts').html(posts.render().el);
-                console.log("< renderPosts");
             },
 
             renderLanding : function (){
-                console.log("renderLanding");
                 var land = new LandingScreen();
                 this.$el.find('section.landing-screen').html(land.render().el);
             },
 
             renderSubNav: function () {
-                console.log("renderSubNav");
                 var dash = new DashboardSubNav();
                 this.$el.find('section.subnav').html(dash.render().el);
 
@@ -49,7 +45,6 @@ define(
 
             // Render twitter hashtags (add twitter integration)
             renderSocialFeed: function () {
-                console.log("renderSocialFeed");
                 var feed = new SocialFeed({
                     handle: Application.config.social.twitter_handle
                 });
@@ -58,7 +53,7 @@ define(
 
             // Render calendar data (from calendar.json)
             renderCalendar: function (callback) {
-                console.log("> renderCalendar");
+
                 var calendar = new Calendar();
                 var componentName = "calendar";
                 var self = this;
@@ -80,19 +75,16 @@ define(
                         // RENDER EVENTS FROM THE SDK AS ARRAY OF OBJ
                         events: data[componentName]
                     });
-                    console.log("< renderCalendar");
-                    return callback()
                 }, this.error);
             },
 
             // Render github organization stats
             renderStats: function () {
-                console.log("renderStats");
             },
 
             // Render ToolBelt from toolbelt.json
             renderRepoList: function () {
-                console.log("renderRepoList");
+
                 var repolist = new RepoList();
                 this.$el.find('section.toolbelt').html(repolist.render().el);
             }
