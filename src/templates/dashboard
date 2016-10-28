@@ -7,8 +7,8 @@
 <div class="col-sm-4">
 
    <section class="feed"></section>
-   <section class="toolbelt"></section>
    <section class="calendar"></section>
+   <section class="toolbelt"></section>
 
 </div>
 </div>
