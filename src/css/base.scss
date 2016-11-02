@@ -71,3 +71,16 @@ img {
 		display: none;
 	}
 }
+
+.small_header{
+  header {
+    
+    height: 350px!important;
+    
+    .center {
+      top: 120px;
+      transform: none;
+    }
+    
+  }
+}

@@ -7,8 +7,8 @@ define(
                 console.error(err);
             },
 
-            initialize: function (options) {
-                window.addEventListener('scroll', this.windowScrollHandle, false);
+            initialize: function (options) {               
+                //window.addEventListener('scroll', this.windowScrollHandle, false)
             },
 
             render: function () {
@@ -20,10 +20,12 @@ define(
                 this.renderRepoList();
                 this.renderPosts();
                 this.renderCalendar();
-                $('#call-menu').click(function(e){
-                    e.preventDefault();
-                    $('#hidden-menu').toggleClass('active');
-                });
+
+//                $('#call-menu').click(function(e){
+//                    e.preventDefault();
+//                   $('#hidden-menu').toggleClass('active'); 
+//                });
+                
                 return this;
             },
 

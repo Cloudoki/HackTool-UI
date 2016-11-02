@@ -14,11 +14,15 @@ define(
 				
 				$('body').addClass('small_header');
 				$('body').find('.sub_title').html('Buccaneers these proud women and men are. <em>Salute</em>!');
-
+				
 			},
 
 		    render: function(refresh)
 		    {
+				
+				if(window.pageYOffset === 0)
+					$('.navbar-brand').removeAttr('style');$('.navbar-brand').removeAttr('style');
+				
 		    	this.$el.html(Mustache.render(Templates.team_page, {teamMembers: this.teamMembers}));
 
 		    	if (!refresh)

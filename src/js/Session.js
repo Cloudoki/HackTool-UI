@@ -38,7 +38,7 @@ define(
 
 					callback();
 					
-				}.bind(this))
+				}.bind(this));
 			},
 
 			logout: function() {

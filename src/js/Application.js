@@ -64,6 +64,13 @@ define(
 				Application.Router = new Router ();
 
 				Backbone.history.start();
+
+				$(window).scroll(function(){
+					if ($('body').scrollTop() > 40)
+						$('nav').addClass('solid')
+					else
+						$('nav').removeClass('solid')
+				});
 			}
 		};
 

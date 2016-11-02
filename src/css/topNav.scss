@@ -7,12 +7,18 @@ header {
     background-attachment: fixed;
     height: 100%;
 
-.navbar-default {
+.navbar-fixed-top {
     
     border: none;
     border-radius: 0px;
     background-color: transparent;
     margin-bottom: 0px;
+    transition: background .5s;
+
+    &.solid {
+        background-color: #333;
+
+    }
 
     .navbar-brand { 
         background-image: url(../images/hack-icon.png); 
@@ -20,7 +26,7 @@ header {
         background-size: cover; 
         margin: 15px!important; 
         padding: 26px 15px;
-        position: fixed;
+        //position: fixed;
         z-index: 100;
     }
 
@@ -117,7 +123,7 @@ header {
                 font-size: 40px; 
                 font-weight: 100; 
                 color: #fff; 
-                padding: 40px 0px; 
+                padding: 10px 0px; 
                 margin: 0;}
             
             p {
@@ -134,12 +140,12 @@ header {
         width: 30%;
         height: 100%;
         z-index: 100;
-        margin-top: -100%;
-        background-color: rgba(235,82,7,.8);
+        margin-left: -1000px;
+        background-color: rgba(235,82,7,100);
         transition: .5s all;
         
         &.active {
-            margin-top: 0;
+            margin-left: 0;
         }
         
         .circle {
