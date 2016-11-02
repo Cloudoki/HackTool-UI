@@ -1,6 +1,19 @@
 body {
     background-color: #f7f7f7;
     font: $font-stack;
+
+    &.small_header{
+      header {        
+        .center {
+          top: 120px;
+          transform: none;
+        }        
+      }
+    }
+
+    &.loaded {
+      height: 350px!important;
+    }
 }
 
 h1 {
@@ -70,17 +83,4 @@ img {
 	.view-only {
 		display: none;
 	}
-}
-
-.small_header{
-  header {
-    
-    height: 350px!important;
-    
-    .center {
-      top: 120px;
-      transform: none;
-    }
-    
-  }
 }

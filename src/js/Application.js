@@ -65,6 +65,7 @@ define(
 
 				Backbone.history.start();
 
+				$('body').addClass('loaded');
 				$(window).scroll(function(){
 					if ($('body').scrollTop() > 40)
 						$('nav').addClass('solid')
