@@ -1,6 +1,6 @@
 define({
 	git: {
-		organization: "Cloudoki",
+		organization: "TUIHackfridays",
 		repo: "_hacktool",
 		team: "2052463"
 	}
