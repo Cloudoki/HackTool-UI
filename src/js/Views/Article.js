@@ -40,28 +40,28 @@ define(
 		    		categories: Application.config.content.categories
 		    	}));
 
-		    	// If we are viewing a post and still don't have it in storage, get it
-		    	if (this.post) {
+				// If we are viewing a post and still don't have it in storage, get it
+                if (this.post) {
+					// for content if...
+	                if ( !this.post.attributes.content && !refresh )
+	                	this.getFile();
+					// if there is content to render, then do it!
+	                if ( this.post.attributes.content )
+	            		this.$el.find('.article-content').html(markdown.toHTML(this.post.attributes.content));
+                }
+                // If we are not viewing a post, enter edit/create mode
+                else {
+                	this.editMode();
+                }
 
-		    		if (!this.post.attributes.content && !refresh)
-		    			this.getFile();
-
-		    		if (refresh)
-		    			this.$el.find('.article-content').html(markdown.toHTML(this.post.attributes.content));
-		    	}
-		    	
-		    	// If we are not viewing a post, enter edit/create mode
-		    	else
-		    		this.editMode();
-
-		        return this;
+                return this;
 		    },
 
 		    canEdit: function() {
 
 		    	if (!this.post)						return false;
 		    	if (Application.Session.isAdmin)	return true;
-		    	
+
 		    	if (this.post.attributes.created_by == Application.Session.User.get('login'))
 		    		return true;
 		    },
@@ -71,7 +71,7 @@ define(
 
 		    	if (!this.post.attributes.filename)
 		    		hacktoolSdk.Articles.get(this.post.id, function(data){
-		    			
+
 		    			$.extend(this.post.attributes, data);
 		    			Application.Session.Posts.add(this.post);
 
@@ -81,9 +81,9 @@ define(
 
 		    	else
 					hacktoolSdk.Articles.read(this.post.attributes.filename, function(data){
-		    			
+
 		    			$.extend(this.post.attributes, data);
-		    			
+
 		    			this.render(true);
 
 		    		}.bind(this));
@@ -98,13 +98,13 @@ define(
 		    	this.$el.find('.chosen-select').val(this.post? this.post.attributes.category: 'Hackfridays');
 		    	this.$el.find('.chosen-select').chosen({width: "100%", disable_search_threshold: 10});
 		    	this.$el.find('#mdeditor-wrapper').html('<textarea id="mdeditor"></textarea>');
-		    	
+
 		    	// Temporary hack to initialize the editor
 		    	setTimeout(function(){
 
 		    		this.mde = new SimpleMDE({element: document.getElementById("mdeditor")})
 
-		    		if (e) 
+		    		if (e)
 		    			this.mde.value(this.post.attributes.content)
 
 		    	}.bind(this), 100);
@@ -127,7 +127,7 @@ define(
 		    	// add article
 		    	if (!this.post)
 		    		hacktoolSdk.Articles.add(article, this.articleAdded.bind(this));
-		    	
+
 		    	// update article
 		    	else
 		    		hacktoolSdk.Articles.edit(this.articleId, article, this.articleSaved.bind(this));
