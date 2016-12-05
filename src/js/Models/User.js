@@ -7,15 +7,15 @@ define(
 
 			initialize: function(options) {
 
-				this.once('change', this.activate);			
+				this.once('change', this.activate);
 			},
 
 			Fetch: function() {
 
 				hacktoolSdk.Users.me(function(user){
 					$.extend(this.attributes, user);
-					this.activate();
-					
+					this.isMember();
+
 				}.bind(this))
 			},
 
@@ -35,6 +35,17 @@ define(
 				this.admin = _.find(admins, function(user) {
 					return user.email == this.get('email')
 				}.bind(this))? true: false;
+			},
+
+			isMember: function() {
+				var self = this;
+				hacktoolSdk.Users.isMember(function(result){
+					self.member = result;
+					self.activate();
+				}, function (error) {
+					self.activate();
+					console.error("An error occured:", error);
+				});
 			}
 		});
 

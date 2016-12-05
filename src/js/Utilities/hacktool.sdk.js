@@ -69,7 +69,7 @@ var hacktoolSdk = {
             url: 'https://api.github.com/orgs/'+hacktoolSdk.organization+'/repos?type=public',
             method: 'GET'
         }).done(function(data) {
-            
+
             // I removed the filterRepos but this make all the sense. We need to made this configurable.
             return success(data);
         }).error(error);
@@ -85,6 +85,16 @@ var hacktoolSdk = {
       }).done(function(data) {
         hacktoolSdk.user = data;
         success(data)
+      }).error(error);
+    },
+    isMember: function(success, error) {
+      request({
+          url: 'https://api.github.com/user/orgs',
+          method: 'GET'
+      }).done(function(data) {
+        // search inside of the user organizations to see if the user is a member
+        var result = -1 !== _.indexOf(_.pluck(data, "login"), hacktoolSdk.organization);
+        success(result)
       }).error(error);
     }
   },

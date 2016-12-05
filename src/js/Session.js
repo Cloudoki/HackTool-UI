@@ -1,24 +1,23 @@
-
 define(
 	['Models/User', 'Collections/Posts'],
 	function (User, Posts)
 	{
 		var Session = {
-			
+
 			version : 1,
 			isAdmin: false,
 
 			loadEssentialData : function (callback)
-			{	
+			{
 				this.User = new User();
 				this.Posts = new Posts();
 
-				this.User.once("activated", function () {	
+				this.User.once("activated", function () {
 
 					this.getSettings(callback);
 
 				}.bind(this));
-				
+
 				this.User.Fetch({error: this.authError.bind(this)});
 			},
 
@@ -32,12 +31,13 @@ define(
 				hacktoolSdk.Settings.get(function(settings){
 
 					$.extend(Application.config, settings);
-					
+
 					this.User.isAdmin();
 					this.isAdmin = this.User.admin;
+					this.isMember = this.User.member;
 
 					callback();
-					
+
 				}.bind(this));
 			},
 

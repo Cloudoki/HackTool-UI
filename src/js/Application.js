@@ -53,7 +53,10 @@ define(
 
 			// Callbak function after user authentication
 			begin: function() {
-
+				if(!Application.Session.isMember) {
+					window.location = "error.html"
+					return;
+				}
 				$('body').addClass('loaded').removeClass('loading');
 
 				// Root view
