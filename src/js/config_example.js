@@ -1,5 +1,7 @@
 define({
-	git_uri: "https://github.com/Cloudoki/_hacktool",
-	organizations: "Cloudoki",
-	team: "Hackteam"
+	git: {
+		organization: "Cloudoki",
+		repo: "_hacktool",
+		team: "Hackteam git Code"
+	}
 });

@@ -43,8 +43,9 @@ define(
 					self.member = result;
 					self.activate();
 				}, function (error) {
-					self.activate();
 					console.error("An error occured:", error);
+					self.member = false;
+					self.activate();
 				});
 			}
 		});
