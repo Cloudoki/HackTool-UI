@@ -53,7 +53,13 @@ define(
 
 			// Callbak function after user authentication
 			begin: function() {
-
+				// check if user is member
+				if(!Application.Session.isMember) {
+					if(window.localStorage.getItem('token'))
+						window.localStorage.removeItem('token');
+					window.location = "error.html";
+					return;
+				}
 				$('body').addClass('loaded').removeClass('loading');
 
 				// Root view
@@ -68,9 +74,9 @@ define(
 				$('body').addClass('loaded');
 				$(window).scroll(function(){
 					if ($('body').scrollTop() > 40)
-						$('nav').addClass('solid')
+						$('nav').addClass('solid');
 					else
-						$('nav').removeClass('solid')
+						$('nav').removeClass('solid');
 				});
 			}
 		};

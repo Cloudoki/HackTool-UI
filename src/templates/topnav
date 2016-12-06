@@ -41,6 +41,7 @@
         {{/isAdmin}}
         <li><a href="#team">Team</a></li>
         <li><a href="#toolbelt">Tool Belt</a></li>
+        <li><a href="#logout"><strong>Logout</strong></a></li>
         <li class="user_holder">
             <div class="user_description">
                 <p class="user_name">{{user.login}}</p>

@@ -18,7 +18,7 @@
 Install the dependencies with `npm install` or `sudo npm install`.
 
 ## Configuration
-The auth configurations are located in the `src/js/config-example.js` file. Since configurations may vary from local setup to production setup, to enable these you must do a `cp src/js/config_example.js config.js` first. The generated file will be your configuration file, and should never be commited back to the repo.
+The auth configurations are located in the `src/js/config-example.js` file. Since configurations may vary from local setup to production setup, to enable these you must do a `cp src/js/config_example.js dist/js/config.js` first. The generated file will be your configuration file, and should never be commited back to the repo.
 
 ## Adding packages
 The package is setup so you can easily add external packages to your project, while making it easier to manage dependencies. Doing
