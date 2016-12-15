@@ -1,6 +1,6 @@
 <section id="login_screen">
     <div class="center">
-        <h1>#TUI HackFridays</h1>
+        <h1>#PROJECTNAME</h1>
         <p class="sub_title"> Manage your hackathons like a pro </p>
     </div>
 </section>

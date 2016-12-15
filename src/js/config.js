@@ -1,7 +1,7 @@
 define({
 	git: {
-		organization: "TUIHackfridays",
+		organization: "Cloudoki",
 		repo: "_hacktool",
-		team: "1939758"
+		team: "2052463"
 	}
 });
