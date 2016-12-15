@@ -41,6 +41,13 @@
 						{{/categories}}
 					</select>
 				</div>
+				<div class="col-sm-3">
+					<label>Hidden</label>
+					<div class="material-switch">
+	          <input id="article_visible" name="article_visible" type="checkbox" {{#post.id}}checked{{/post.id}}/>
+	          <label for="article_visible" class="label-hacktool"></label>
+	        </div>
+				</div>
 			</div>
 			<br>
 			<div id="mdeditor-wrapper"></div>

@@ -10,16 +10,18 @@
 		</div>
 	<div class="dash_container">
 		{{#posts}}
-			<div class="post-display">
-				<h1 class="display-block post-title" data-id="{{id}}">{{attributes.title}}</h1>
-					<div class="post-specs">
-						<img class="img-responsive" src="/images/paper-plane.png">
-						<p class="details-text">Posted on {{created_at}}</p>
-						<img src="/images/folder.png">
-						<p class="details-text">Post in {{attributes.category}}, by {{attributes.created_by}}</p>
-					</div>
-				<p class="display-block post-text">{{attributes.intro}}</p>
-			</div>	
-		{{/posts}}		
+			{{#attributes.visible}}
+				<div class="post-display">
+					<h1 class="display-block post-title" data-id="{{id}}">{{attributes.title}} {{#attributes.show-icon}}<span class="fa fa-eye-slash text-muted" aria-hidden="true" title="not visible to all users"></span>{{/attributes.show-icon}}</h1>
+						<div class="post-specs">
+							<img class="img-responsive" src="/images/paper-plane.png">
+							<p class="details-text">Posted on {{created_at}}</p>
+							<img src="/images/folder.png">
+							<p class="details-text">Post in {{attributes.category}}, by {{attributes.created_by}}</p>
+						</div>
+					<p class="display-block post-text">{{attributes.intro}}</p>
+				</div>
+			{{/attributes.visible}}
+		{{/posts}}
 	</div>
 </div>

@@ -1,13 +1,13 @@
 define(
-    ['Views/BaseView', 'Views/RepoList', 'Views/landingScreen', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts', 'Views/SocialFeed'],
-    function (BaseView, RepoList, LandingScreen, DashboardSubNav, Calendar, DasboardPosts, SocialFeed) {
+    ['Views/BaseView', 'Views/RepoList', 'Views/landingScreen', 'Views/DashboardSubNav', 'Views/Calendar', 'Views/DashboardPosts', 'Views/SocialFeed', 'moment'],
+    function (BaseView, RepoList, LandingScreen, DashboardSubNav, Calendar, DasboardPosts, SocialFeed, moment) {
         var Dashboard = BaseView.extend({
 
             error: function (err) {
                 console.error(err);
             },
 
-            initialize: function (options) {               
+            initialize: function (options) {
                 //window.addEventListener('scroll', this.windowScrollHandle, false)
             },
 
@@ -23,9 +23,9 @@ define(
 
 //                $('#call-menu').click(function(e){
 //                    e.preventDefault();
-//                   $('#hidden-menu').toggleClass('active'); 
+//                   $('#hidden-menu').toggleClass('active');
 //                });
-                
+
                 return this;
             },
 
@@ -69,6 +69,26 @@ define(
                             left: 'prev,next today',
                             center: '',
                             right: 'title'
+                        },
+                        eventMouseover: function (data, event, view) {
+                          var tooltip = {
+                            "title": data.title,
+                            "date": moment(data.start).format('MMMM Do YYYY, h:mm a')
+                          };
+
+                          $("body").append(Mustache.render(Templates.tooltip, tooltip));
+                          $(this).mouseover(function (e) {
+                              $(this).css('z-index', 10000);
+                              $('.tooltip_topic_event').fadeIn('500');
+                              $('.tooltip_topic_event').fadeTo('10', 1.9);
+                          }).mousemove(function (e) {
+                              $('.tooltip_topic_event').css('top', e.pageY + 10);
+                              $('.tooltip_topic_event').css('left', e.pageX + 20);
+                          });
+                        },
+                        eventMouseout: function (data, event, view) {
+                            $(this).css('z-index', 8);
+                            $('.tooltip_topic_event').remove();
                         },
                         defaultView: 'month',
                         defaultDate: new Date(),

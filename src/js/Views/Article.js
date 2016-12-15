@@ -121,7 +121,8 @@ define(
 		    	var article = {
 		    		title: this.$el.find("#title").val(),
 		    		content: this.mde.value(),
-		    		category: this.$el.find('.category').val()
+		    		category: this.$el.find('.category').val(),
+						hidden: this.$el.find('#article_visible').is(":checked")
 		    	};
 
 		    	// add article

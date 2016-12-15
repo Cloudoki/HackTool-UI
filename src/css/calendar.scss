@@ -3,3 +3,31 @@
         padding: 10px;
     }
 }
+
+.tooltip_topic_event {
+  border-top: thick solid $primary-color;
+  width: auto;
+  height: auto;
+  background: $white;
+  position: absolute;
+  z-index: 10001;
+  padding: 10px 10px 10px 10px ;
+  line-height: 200%;
+  text-align:center;
+}
+
+.tooltip_topic_event .title {
+  color: $primary-color;
+}
+
+.tooltip_topic_event .break {
+    width: 40px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 15px auto;
+    background-color: $primary-color;
+}
+
+.tooltip_topic_event .time {
+  color: $light-grey;
+}

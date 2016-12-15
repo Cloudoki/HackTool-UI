@@ -136,7 +136,7 @@ var hacktoolSdk = {
         // hacktoolSdk.readJSON(data.download_url, function(metadata){
         //   success(metadata, data.sha)
         // })
-        success(JSON.parse(atob(data.content)), data.sha);
+        success(JSON.parse(decodeURIComponent(escape(atob(data.content)))), data.sha);
       }).error(error);
     },
 
@@ -205,6 +205,7 @@ var hacktoolSdk = {
             created_at: data.commit.author.date,
             filename: data.content.name,
             category: article.category,
+            hidden: article.hidden,
             sha: data.content.sha
           });
           metadata.total = metadata.articles.length;
@@ -218,7 +219,7 @@ var hacktoolSdk = {
           url: 'https://api.github.com/repos/'+hacktoolSdk.organization+'/'+hacktoolSdk.repo+'/contents/articles/'+name,
           method: 'GET'
       }).done(function(data) {
-        success(JSON.parse(atob(data.content)));
+        success(JSON.parse(decodeURIComponent(escape(atob(data.content)))));
       }).error(error);
     },
 
@@ -311,6 +312,7 @@ var hacktoolSdk = {
                 metadata.articles[n].intro = article.content.substring(0,100);
                 metadata.articles[n].content = article.content;
                 metadata.articles[n].category = article.category;
+                metadata.articles[n].hidden = article.hidden;
                 metadata.articles[n].sha = data.content.sha;
                 break;
               }
